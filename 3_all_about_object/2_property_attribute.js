@@ -24,7 +24,7 @@ console.log(Object.getOwnPropertyDescriptor(yuJin, 'year'));
 
 console.log(Object.getOwnPropertyDescriptor(yuJin, 'name'));
 
-console.log(Object.getOwnPropertyDescriptors(yuJin)); //모든 프로퍼티의 애트리뷰트를 전부 보여줌
+console.log(Object.getOwnPropertyDescriptors(yuJin)); //모든 프로퍼티의 어트리뷰트를 전부 보여줌
 
 const yuJin2 = {
     name: '안유진',
