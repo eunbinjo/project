@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator</title>
+    <style>
+        table{
+           border-collapse: collapse;
+       }
+       caption, th {
+           border: 1px solid #ccc;
+           text-align: center;
+       }
+       td {
+           border: 1px solid #ccc;
+           text-align: center;
+           width: 200px;
+       }
+   </style>
+</head>
+<body>
+    <h1>Operator (연산자)</h1>
+    <p>어떤 연산을 처리하는데 사용하도록 미리 정의된 기호</p>
+    <br>
+    <h2>산술 연산자</h2>
+    <p>산술 연산자는 덧셈, 뺄셈, 곱셈, 나눗셈과 같은 수학 연산을 수행하는 연산자를 말한다.</p>
+    <fieldset>
+        <legend>산술 연산자</legend>
+        <table>
+            <tr>
+                <th>구분</th>
+                <th>연산자</th>
+                <th>예</th>
+                <th>설명</th>
+            </tr>
+            <tr>
+                <td rowspan="6">이항 산술</td>
+                <td>+</td>
+                <td>x + y</td>
+                <td>x에 y를 더한다.</td>
+            </tr>
+            <tr>
+                <td>-</td>
+                <td>x - y</td>
+                <td>x에서 y를 뺀다.</td>
+            </tr>
+            <tr>
+                <td>*</td>
+                <td>x * y</td>
+                <td>x에 y를 곱한다.</td>
+            </tr>
+            <tr>
+                <td>/</td>
+                <td>x / y</td>
+                <td>x를 y로 나눈다.</td>
+            </tr>
+            <tr>
+                <td>%</td>
+                <td>x % y</td>
+                <td>x를 y로 나누어 나머지를 구한다.</td>
+            </tr>
+            <tr>
+                <td>**</td>
+                <td>x ** y</td>
+                <td>x의 y거듭제곱을 구한다.</td>
+            </tr>
+            <tr>
+                <td rowspan="2">단항 산술</td>
+                <td>++</td>
+                <td>
+                    x++ <br>
+                    ++x
+                </td>
+                <td>x를 1 증가시킨다.</td>
+            </tr>
+            <tr>
+                <td>--</td>
+                <td>
+                    x-- <br>
+                    --x
+                </td>
+                <td>x를 1 감소시킨다.</td>
+            </tr>
+            <tr>
+                <td>단항 부정</td>
+                <td>-</td>
+                <td>-x</td>
+                <td>x의 부호를 부정한다. (음수->양수 / 양수->음수)</td>
+            </tr>
+        </table>
+    </fieldset>
+    <h3>이항 산술 연산자</h3>
+    <p>이항 산술 연산자는 연산을 수행하는데 피연산자가 2개 필요한 연산자이다.</p>
+    <fieldset>
+        <legend>이항 산술 연산자 예시</legend>
+        <p>
+            let sum = 10 + 20; // 30 <br>
+            let sub = 20 - 10; // 10 <br>
+            let multi = 10 * 20; // 200<br>
+            let div = 10 / 2; // 5<br>
+            let remain = 10 % 3; // 1<br>
+            let expon = 2 ** 3; // 8
+        </p>
+    </fieldset>
+    <h3>단항 산술 연산자</h3>
+    <p>단항 산술 연산자는 연산을 수행하는데 피연산자가 1개만 필요한 연산자이다. ++연산자와 --연산자를 합쳐 '증감 연산자'라고도 한다.</p>
+    <fieldset>
+        <legend>단항 산술 연산자 예시</legend>
+        <p>
+            let increment = 10;<br>
+            increment++;<br>
+            let decrement = 10;<br>
+            decrement--;
+        </p>
+        <p>
+            console.log(increment); // 11<br>
+            console.log(decrement); // 9
+        </p>
+    </fieldset>
+    <p>단항 산술 연산자는 변수나 상수에 할당된 데이터로만 연산할 수 있고, 숫자에 바로 사용하는 건 안 된다.</p>
+    <h4>전치 연산과 후치 연산</h4>
+    </body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Type</title>
+    <style>
+        table{
+           border-collapse: collapse;
+       }
+       caption, th {
+           border: 1px solid #ccc;
+           text-align: center;
+       }
+       td {
+           border: 1px solid #ccc;
+           text-align: center;
+           width: 200px;
+       }
+   </style>
+</head>
+<body>
+    <h1>자료형(data type)</h1>
+    <p>자바스크립트에서 사용할 수 있는 데이터의 종류를 의미. Primitive type(기본 자료형)과 Reference type(참조 자료형)으로 나뉜다.</p>
+    <table>
+        <tr>
+            <th>Primitive type</th>
+            <td>string<br>
+                number<br>
+                boolean<br>
+                undefined<br>
+                null<br>
+                Symbol<br>
+            </td>
+        </tr>
+        <tr>
+            <th>Reference type</th>
+            <td>Object</td>
+        </tr>
+    </table>
+    <br>
+    <h2>String (문자열)</h2>
+    <p>자바스크립트에서 문자열은 "Hello, World"나 'Hello, World'처럼 큰따옴표나 작은따옴표로 둘러싸인 값의 형태를 의미한다.</p>
+    <p>큰따옴표로 시작했으면 반드시 큰따옴표로 끝나야하고, 작은따옴표로 시작했으면 작은따옴표로 끝나야 한다.</p>
+    <h3>문자열에 따옴표가 포함된 경우?</h3>
+    <p>이런 경우 작성하려는 문자열에 포함되지 않은 따옴표로 문자열을 감싸서 정의한다. 문자에 작은따옴표가 포함되어있다면 큰따옴표로 감싸는 식이다.</p>
+    <h4>만약 문자열에 큰따옴표와 작은따옴표가 둘 다 포함되어 있다면?</h4>
+    <p>문자열 연결 연산자나 이스케이프 문자를 사용한다.</p>
+    <h3>문자열 연결 연산자</h3>
+    <p>문자열 연결 연산자(+)는 우리가 알고 있는 덧셈 기호와 같다.</p>
+    <fieldset>
+        <legend>문자열 연결 연산자</legend>
+        <p>
+            <strong>let</strong> string = '문자열' + "연결 연산자";<br>
+            console.log(string);
+        </p>
+        <p>결과 : 문자열 연결 연산자</p>
+    </fieldset>
+    <h3>이스케이프 문자 Escaping character</h3>
+    <p>이스케이프 문자는 웹 브라우저가 사용자 의도와 다르게 문자열을 해석할 때 사용한다. 자바스크립트에서는 역슬래시(\)를 붙여 이스케이프 문자로 사용한다.</p>
+    <p>문자 인식 이외에도 이스케이프 문자를 사용해 다양한 기능을 표현할 수 있다.</p>
+    <fieldset>
+        <legend>이스케이프 문자 주요 기능</legend>
+        <table>
+            <tr>
+                <th>이스케이프 문자 사용 시</th>
+                <th>설명</th>
+            </tr>
+            <tr>
+                <td>\'</td>
+                <td>작은따옴표(single quotes)</td>
+            </tr>
+            <tr>
+                <td>\"</td>
+                <td>큰따옴표(double quotes)</td>
+            </tr>
+            <tr>
+                <td>\n</td>
+                <td>줄 바꿈(new line)</td>
+            </tr>
+            <tr>
+                <td>\t</td>
+                <td>수평 탭(horizontal tab)</td>
+            </tr>
+            <tr>
+                <td>\\</td>
+                <td>역슬래쉬(backslash)</td>
+            </tr>
+        </table>
+    </fieldset>
+    <h3>템플릿 문자열 Template Literal</h3>
+    <p>템플릿 문자열은 백틱(`)으로 문자열의 정의하는 방법이다. 기존 정의 방식처럼 큰따옴표나 작은따옴표로 문자열을 정의하지 않기 때문에, 문자열에 큰따옴표나 작은따옴표가 있어도 영향을 받지 않는다.</p>
+    <fieldset>
+        <legend>템플릿 문자열이 기존 문자열과 다른 점</legend>
+        <p>1. 엔터를 눌러 줄바꿈할 수 있다 => 이스케이프 문자를 사용하지 않아도 된다.</p>
+        <p>2. ${} 문법을 이용해 문자열에 변수 또는 식을 넣을 수 있다.</p>
+    </fieldset>
+    <br>
+    <h2>Number (숫자형)</h2>
+    <p>자바스크립트는 정수와 실수를 구분하지 않고 전부 하나의 숫자 자료형(숫자형)으로 취급한다.</p>
+    <p>다만, 실수를 사용할 때는 주의해야한다. 자바스크립트는 실수를 부동 소수점 방식으로 표현하는데, 이때 실수 계산이 정확하지 않다.</p>
+    <fieldset>
+        <legend>실수 계산 오류 예시</legend>
+        <p>
+            <strong>let</strong> sum = 0.1 + 0.2;<br>
+            console.log(sum);
+        </p>
+        <p>결과 :  0.30000000000000004</p>
+    </fieldset>
+    <p>따라서 실수를 계산하는 프로그램을 만들때는 이 점을 고려해야 한다.</p>
+    <br>
+    <h2>Boolean (논리형)</h2>
+    <p>논리 자료형(논리형)은 참 또는 거짓에 해당하는 논리 값인 true, false를 의미한다. 문자열이나 숫자는 해당 자료형을 정의하는 값이 무수히 많지만, 논리형은 오직 true와 false만 있다.</p>
+    <fieldset>
+        <p>
+            <strong>let</strong> boolean1 = true; <br>
+            <strong>let</strong> boolean2 = false;<br>
+            console.log(boolean1); // true<br>
+            console.log(boolean2); // false<br>
+        </p>
+    </fieldset>
+    <p>또한, 논리적인 연산으로도 값을 구할 수 있다.</p>
+    <fieldset>
+        <p>
+            <strong>let</strong> boolean1 = 10 < 20; <br>
+            <strong>let</strong> boolean2 = 10 > 20; <br>
+            console.log(boolean1); // true<br>
+            console.log(boolean2); // false<br>
+        </p>
+    </fieldset>
+    <br>
+    <h2>undefined</h2>
+    <p>변수나 상수를 컴퓨터 메모리 공간에 선언하면 반드시 생성한 공간에 저장할 데이터를 할당해야 한다. 할당하지 않을 경우 자바스크립트 내부적으로 변수와 상수 공간에 임시로 데이터를 할당하는데, 이때 해당되는 값이 undefined다.</p>
+    <p>undefined는 다른 데이터 타입과는 달리 사용자가 임의로 정의하고 할당하는 것이 아니다.</p>
+    <fieldset>
+        <p>
+            <strong>let</strong> empty; <br>
+            console.log(empty); // undefined<br>
+        </p>
+    </fieldset>
+    <br>
+    <h2>null</h2>
+    <p>null 자료형은 null값 하나만 있으며, 변수나 상수를 선언하고 의도적으로 선언한 공간을 비워둘 때 할당한다.</p>
+    <fieldset>
+        <p>
+            <strong>let</strong> empty = null; <br>
+            console.log(empty); // null<br>
+        </p>
+    </fieldset>
+    <br>
+    <h2>Symbol</h2>
+    <p>유일무이한 값을 생성할 때 사용한다. 다른 프리미티브 타입들과는 달리 Symbol() 함수를 호출해서 사용한다.</p>
+    <fieldset>
+        <p>
+            let symbol1 = Symbol('10');<br>
+            let symbol2 = Symbol('10');<br>
+            <br>
+            console.log(symbol1); // Symbol(10)<br>
+            console.log(symbol2); // Symbol(10)<br>
+            console.log(symbol1 === symbol2); // false<br>
+        </p>
+    </fieldset>
+    <br>
+    <h2>Object (객체)</h2>
+    <p>Object는 자바스크립트의 핵심적인 자료형이다. 앞서 언급한 기본 자료형들을 제외하면 자바스크립트의 모든 데이터와 자료구조는 객체라고 봐야한다.</p>
+    <p>객체 자료형에서 파생되는 자료형으로 배열, 객체 리터럴, 함수가 있다.</p>
+    <h3>array (배열)</h3>
+    <p>복수의 데이터를 정의할 수 있는 데이터 타입.</p>
+    <fieldset>
+        <p>
+            let stedentScore = [80, 70, 90, 60]; //국어, 영어, 수학, 과학 점수
+        </p>
+    </fieldset>
+    <p>위와 같이 배열로 정의한 데이터 하나하나를 <strong>요소</strong>라고 한다.</p>
+    <p>배열 요소에 접근하기 위해서는 인덱스(index)를 이용한다. 인덱스는 각 데이터가 있는 위치를 가리키는 숫자라고 생각하면 된다. 0부터 시작한다.</p>
+    <fieldset>
+        <legend>만일 수학 점수에 접근하려면?</legend>
+        <p>
+            let stedentScore = [80, 70, 90, 60]; //국어, 영어, 수학, 과학 점수<br>
+            console.log(studentScore[2]); //90, 2번 인덱스 데이터에 접근
+        </p>
+    </fieldset>
+    <p>더하여, 배열은 모든 자료형을 저장할 수 있으며 빈 배열을 정의할 수도 있다.</p>
+    <br>
+    <h3>객체 리터럴</h3>
+    <p>객체 리터럴은 객체를 정의하는 가장 간단한 방법이다. 객체를 정의할 때 중괄호({})를 사용하며, 중괄호 안에는 key값과 value값의 한쌍으로 이루어진 property(속성)이 들어간다.</p>
+    <p>객체 리터럴로 정의한 객체는 배열과는 달리 value를 key로 구분한다.</p>
+    <fieldset>
+        <legend>객체 리터럴의 장점</legend>
+        <p>
+            let stedentScore = {<br>
+                koreanScore : 80,<br>
+                englishScore : 70,<br>
+                mathScore : 90,<br>
+                scienceScore : 60<br>
+            }; //국어, 영어, 수학, 과학 점수
+        </p>
+        <p>console.log(studentScore.koreanScore); //80<br>
+            console.log(studentScore['englishScore']); //70</p>
+        <p>
+            객체 리터럴은 인덱스를 활용하는 배열과 달리 key를 활용해 value를 파악하므로, 각 값의 의미를 보다 명확하게 파악할 수 있다.
+        </p>
+    </fieldset>
+    <p>객체 리터럴의 각 값에 접근할 때도 배열처럼 대괄호([])를 사용하고, 추가로 마침표(.)도 사용할 수 있다.</p>
+</body>
+</html>

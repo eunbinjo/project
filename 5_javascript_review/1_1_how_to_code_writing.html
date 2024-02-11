@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to code writing</title>
+</head>
+<body>
+    <h1>자바크스크립트 코드 작성법</h1>
+    <h2>내부 스크립트 방법</h2>
+    <p>HTML 파일에서 script 태그의 콘텐츠 영역에 자바스크립트 코드를 작성하는 방법.</p>
+    <fieldset>
+        <legend>내부 스크립트 방법</legend>
+        <script>
+            document.write("이렇게 작성한다.")
+        </script>
+    </fieldset>
+    <br>
+    <h2>외부 스크립트 방법</h2>
+    <p>js확장자로 된 별도의 파일을 생성하고, 생성한 파일에 자바스크립트 코드를 작성한 뒤, HTML문서와 연결하는 방법.</p>
+    <fieldset>
+        <legend>외부 스크립트 방법</legend>
+        <script src="1_1_script.js"></script>
+    </fieldset>
+    <br>
+    <h2>script 태그 사용 위치</h2>
+    <p>script 태그는 항상 body태그의 종료 태그 바로 전에 사용한다. 이는 내부 스크립트와 외부 스크립트 모두 동일하다.</p>
+    <p>스크립트 코드를 바디 요소의 종료 전에 작성하는 이유는, 브라우저가 HTML 문서를 첫 번째 줄부터 순차적으로 해석하기 때문이다. 사용자에게 당장 보여 줘야 하는 영역은 HTML과 CSS가 우선이다. <br> 자바스크립트는 화면에 표시되는 웹 구성 요소에 동적 효과를 부여하는 데 더 큰 목적이 있어서, 웹 브라우저에 구성 요소를 처음 표시할 때 당장 실행할 필요가 없다.</p>
+</body>
+</html>
