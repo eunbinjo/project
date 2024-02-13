@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scope and Hoisting</title>
+    <style>
+        table{
+           border-collapse: collapse;
+       }
+       caption, th {
+           border: 1px solid #ccc;
+           text-align: center;
+       }
+       td {
+           border: 1px solid #ccc;
+           text-align: left;
+           width: 250px;
+       }
+   </style>
+</head>
+<body>
+    <h1>함수의 특징</h1>
+    <h2>스코프(Scope)</h2>
+    <p>스코프는 변수나 함수와 같은 참조 대상 식별자를 찾아내기 위한 규칙이다. 자바스크립트는 기본으로 스코프에 따라 참조하려는 식별자를 찾는다.</p>
+    <p>자바스크립트의 스코프는 function scope 방식이냐 block scope 방식이냐에 따라, global scope와 local scope의 참조 범위가 달라진다.</p>
+    <h3>1. function scope</h3>
+    <p>함수 스코프는 함수에서 정의한 블록문만 스코프의 유효 범위로 인정하는 방식이다. 함수 내부는 로컬 스코프, 함수 외부는 글로벌 스코프 영역이 된다.</p>
+    <table>
+        <tr>
+            <th>구분</th>
+            <th>예시</th>
+            <th>실행결과</th>
+            <th>설명</th>
+        </tr>
+        <tr>
+            <th>global scope</th>
+            <td>
+                <p>
+                    let a = 10; //글로벌 스코프<br>
+                    function sum(){<br>
+                        console.log(`함수 내부 : ${a}`);<br>
+                    }<br>
+                    sum();<br>
+                    console.log(`함수 외부 : ${a}`);
+                </p>
+            </td>
+            <td>
+                <p>
+                    함수 내부 : 10<br>
+                    함수 외부 : 10
+                </p>
+            </td>
+            <td>
+                <p>
+                    함수 내부와 외부에서 문제 없이 정상적으로 변수 a를 참조해 출력한다. -> 함수 외부는 글로벌 스코프이고, 글로벌 스코프는 스코프와 상관없이 모두 참조할 수 있기 때문.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th>local scope</th>
+            <td>
+                <p>
+                    function sum(){<br>
+                        let a = 10; //로컬 스코프<br>
+                        console.log(`함수 내부 : ${a}`);<br>
+                    }<br>
+                    sum();<br>
+                    console.log(`함수 외부 : ${a}`);
+                </p>
+            </td>
+            <td>
+                <p>
+                    함수 내부 : 10<br>
+                    ReferenceError: a is not defined
+                </p>
+            </td>
+            <td>
+                <p>
+                    함수 내부에 선언한 변수 a는 지역 스코프이기 때문에, 외부에서 참조하려고 하면 오류가 발생한다.
+                </p>
+            </td>
+        </tr>
+    </table>
+    <h3>2. block scope</h3>
+    <p>자바스크립트는 let과 const의 추가로 인해 블록 스코프를 지원하게 되었다.</p>
+    <p>블록 스코프는 {}로 구성된 블록문 기준으로 스코프의 유효범위를 나누는 방식이다. 단, let과 const 키워드로 선언한 변수에 한해서만 적용된다.</p>
+    <table>
+        <tr>
+            <th>구분</th>
+            <th>예시</th>
+            <th>실행결과</th>
+            <th>설명</th>
+        </tr>
+        <tr>
+            <th>let 키워드 - block scope</th>
+            <td>
+                <p>
+                    let a = 10;<br>
+                    {<br>
+                        let b = 20;<br>
+                        console.log(`코드 블록 내부 a: ${a}`);<br>
+                        console.log(`코드 블록 내부 b: ${b}`);<br>
+                    }<br>
+                    console.log(`코드 블록 외부 a: ${a}`);<br>
+                    console.log(`코드 블록 외부 b: ${b}`);
+                </p>
+            </td>
+            <td>
+                <p>
+                    코드 블록 내부 a: 10<br>
+                    코드 블록 내부 b: 20<br>
+                    코드 블록 외부 a: 10<br>
+                    ReferenceError: b is not defined
+                </p>
+            </td>
+            <td>
+                <p>
+                    블록스코프 외부에 let 키워드로 a를 선언, 블록스코프 내부에 let 키워드로 b를 선언. -> 변수 a는 블록문 내외부에서 전부 참조 가능 / 그러나 변수 b는 블록문 내부에서만 참조 가능
+                </p>
+                <p>
+                    변수 b는 블록문 내부에 선언한 로컬 스코프이기 때문!
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th>var 키워드</th>
+            <td>
+                <p>
+                    var a = 10;<br>
+                    {<br>
+                        var b = 20;<br>
+                        console.log(`코드 블록 내부 a: ${a}`);<br>
+                        console.log(`코드 블록 내부 b: ${b}`);<br>
+                    }<br>
+                    console.log(`코드 블록 외부 a: ${a}`);<br>
+                    console.log(`코드 블록 외부 b: ${b}`);
+                </p>
+            </td>
+            <td>
+                <p>
+                    코드 블록 내부 a: 10<br>
+                    코드 블록 내부 b: 20<br>
+                    코드 블록 외부 a: 10<br>
+                    코드 블록 외부 b: 20
+                </p>
+            </td>
+            <td>
+                <p>
+                    블록 스코프는 오직 let, const 키워드에서만 발생하므로, 같은 코드를 var 키워드로 실행하면 참조 오류가 발생하지 않는다.
+                </p>
+                <p>var 키워드는 함수 스코프 방식으로만 스코프를 나누기 때문에, 옆의 코드는 변수 a, b 모두 글로벌 스코프에서 선언한 것과 마찬가지로 본다.</p>
+            </td>
+        </tr>
+    </table>
+    <h3>참조 우선 순위</h3>
+    <p>let, const 키워드는 같은 식별자의 중복 선언이 불가능하다. 정확하게는 '같은 스코프 영역'에서 중복 선언이 불가능하다.</p>
+    <table>
+        <tr>
+            <th>구분</th>
+            <th>예시</th>
+            <th>실행결과</th>
+            <th>설명</th>
+        </tr>
+        <tr>
+            <th>참조 우선 순위</th>
+            <td>
+                <p>
+                    let a = 10;<br>
+                    const b = 20;<br>
+                    function sum(){<br>
+                        let a = 50;<br>
+                        const b = 70;<br>
+                        console.log(`함수 내부 a: ${a}`);<br>
+                        console.log(`함수 내부 b: ${b}`);<br>
+                    }<br>
+                    sum();
+                </p>
+            </td>
+            <td>
+                <p>
+                    함수 내부 a: 50<br>
+                    함수 내부 b: 70
+                </p>
+            </td>
+            <td>
+                <p>
+                    let, const 키워드를 활용해 변수 a, b를 각각 함수 외부와 내부에 모두 선언했음에도 중복 선언 오류가 발생하지 않는다. -> 스코프 범위가 다르기 때문이다.
+                </p>
+                <p>
+                    글로벌 스코프와 로컬 스코프에 같은 식별자를 가지는 참조 대상이 있다면, 먼저 같은 로컬 스코프의 식별자를 참조한다.
+                </p>
+                <p>
+                    같은 로컬 스코프에서 참조할 식별자를 찾지 못할 때만 글로벌 스코프에서 찾는다.
+                </p>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <h2>함수 호이스팅</h2>
+    <p>Hoisting은 코드를 선언과 할당으로 분리해, 선언부를 자신의 스코프 최상위로 끌어올리는 것을 말한다.</p>
+    <p>호이스팅은 var 키워드로 선언한 변수에만 적용되고, let과 const 키워드로 선언한 변수에는 적용되지 않는다. 하지만, 호이스팅은 함수에도 적용된다.</p>
+    <table>
+        <tr>
+            <th>구분</th>
+            <th>코드</th>
+            <th>실행 결과</th>
+            <th>설명</th>
+        </tr>
+        <tr>
+            <th rowspan="2">함수 선언문</th>
+            <td>
+                <p>
+                    printHello();<br>
+                    function printHello(){<br>
+                        console.log('Hello');<br>
+                    }
+                </p>
+            </td>
+            <td rowspan="2">
+                <p>Hello</p>
+            </td>
+            <td rowspan="2">
+                <p>
+                    printHello() 함수가 정의되기 전에 호출하고 있어서, 오류가 나거나 정상적으로 실행되지 않을 것 같지만 실행해보면 함수가 정상적으로 호출되어 Hello라는 값이 출력된다.
+                </p>
+                <p>
+                    함수 선언문으로 정의된 함수는 호이스팅에서 '선언부'로 보기 때문이다. 그래서 위의 함수는 꼭 아래의 함수처럼 실행이 된다.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>
+                    function printHello(){<br>
+                        //함수 선언문을 최상위로 끌어올림<br>
+                        console.log('Hello');<br>
+                    }<br>
+                    printHello();
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th rowspan="2">함수 표현식</th>
+            <td>
+                <p>
+                    printHello();<br>
+                    var printHello = function printHello(){<br>
+                        console.log('Hello');<br>
+                    }
+                </p>
+            </td>
+            <td rowspan="2">
+                <p>TypeError: printHello is not function</p>
+            </td>
+            <td rowspan="2">
+                <p>
+                    함수 표현식에서 선언부는 '변수를 선언한 부분'이기 때문에, 실제로는 아래와 같이 실행되어 오류 메시지가 나오게 된다.
+                </p>
+                <p>
+                    화살표 함수 방식으로 정의해도 결국 함수 표현식처럼 변수에 함수를 할당하는 것이므로 함수 표현식과 같은 원리로 호이스팅된다.
+                </p>
+                <p>
+                    단, 함수 표현식이나 화살표 함수를 let이나 const 키워드로 선언했다면, 호이스팅 자체가 일어나지 않는다.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>
+                    var printHello;<br>
+                    printHello();<br>
+                    printHello = function printHello(){<br>
+                        //함수 선언문을 최상위로 끌어올림<br>
+                        console.log('Hello');<br>
+                    }
+                </p>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

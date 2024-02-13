@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standard built-in object</title>
+    <style>
+        table{
+           border-collapse: collapse;
+       }
+       caption, th {
+           border: 1px solid #ccc;
+           text-align: center;
+       }
+       td {
+           border: 1px solid #ccc;
+           text-align: center;
+       }
+   </style>
+</head>
+<body>
+    <h1>표준 내장 객체</h1>
+    <p>자바스크립트에 기본으로 내장되어 있어서, 스코프의 위치를 따지지 않고 모든 영역에서 공통으로 사용할 수 있는 객체를 표준 내장 객체(Standard built-in object)라고 한다.</p>
+    <p>더 많은 표준 내장 객체를 확인하고 싶다면 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects" target="_blank">여기</a>를 확인한다.</p>
+    <h2>String 객체</h2>
+    <p>String 객체는 기본 자료형에서 문자열을 다룬다.</p>
+    <fieldset>
+        <legend>String 객체의 주요 속성과 메서드</legend>
+        <table>
+            <tr>
+                <th colspan="2" style="width: 200px;">구분</th>
+                <th style="width: 450px;">설명</th>
+            </tr>
+            <tr>
+                <td>속성</td>
+                <td>length</td>
+                <td>문자열의 길이를 반환한다.</td>
+            </tr>
+            <tr>
+                <td rowspan="7">메서드</td>
+                <td>includes()</td>
+                <td>메서드의 파라미터에 아규먼트로 전달되는 문자열이 대상 문자열에 포함되어있으면 true, 아니면 false를 반환한다.</td>
+            </tr>
+            <tr>
+                <td>replace()</td>
+                <td>대상 문자열에서 메서드의 파라미터에 아규먼트로 전달되는 문자열과 일치하는 한 부분을 찾아서 다른 데이터로 변경한 새로운 문자열을 반환한다.</td>
+            </tr>
+            <tr>
+                <td>replaceAll()</td>
+                <td>대상 문자열에서 메서드의 파라미터에 아규먼트로 전달되는 문자열과 일치하는 모든 부분을 찾아서 다른 데이터로 변경한 새로운 문자열을 반환한다.</td>
+            </tr>
+            <tr>
+                <td>split()</td>
+                <td>메서드의 파라미터에 아규먼트로 전달되는 구분자를 이용해 대상 문자열을 여러 개의 문자열로 분리하고, 분리한 문자열을 새로운 배열로 반환한다.</td>
+            </tr>
+            <tr>
+                <td>toUpperCase()</td>
+                <td>대상 문자열을 대문자로 변경해 반환한다.</td>
+            </tr>
+            <tr>
+                <td>trim()</td>
+                <td>대상 문자열의 앞뒤 공백을 제거한 값을 반환한다.</td>
+            </tr>
+            <tr>
+                <td>indexOf()</td>
+                <td>대상 문자열과 일치하는 첫 번째 문자의 인덱스를 반환한다.</td>
+            </tr>
+        </table>
+    </fieldset>
+    <p>예시는 <a href="4_3_examples.js" target="_blank">이곳</a>으로...</p>
+</body>
+</html>

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object</title>
+    <style>
+        table{
+           border-collapse: collapse;
+       }
+       caption, th {
+           border: 1px solid #ccc;
+           text-align: center;
+       }
+       td {
+           border: 1px solid #ccc;
+           text-align: left;
+           width: 250px;
+       }
+       td:nth-child(2n){
+           width: 450px;
+       }
+   </style>
+</head>
+<body>
+    <h1>객체란</h1>
+    <p>자료형의 관점에서 보면, key와 value로 구성된 속성의 집합을 의미한다.</p>
+    <p>객체는 자바스크립트에서 제공하는 프리미티브 타입과는 다르게 여러 개의 값을 가질 수 있고, 다른 자료형의 값도 가질 수 있다.</p>
+    <fieldset>
+        <legend>리터럴 객체</legend>
+        <table>
+            <tr>
+                <th>예시</th>
+                <th>설명</th>
+            </tr>
+            <tr>
+                <td>
+                    const person = {<br>
+                        name : "Giselle Caudill"<br>
+                    };
+                </td>
+                <td>
+                    속성은 키와 값으로 구성된다. 예시에서 name은 키고, Giselle Caudill이 값이다.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    const person = {<br>
+                        name : "Giselle Caudill",<br>
+                        age: 20,<br>
+                        isAdult: true<br>
+                    };
+                </td>
+                <td>
+                    객체는 데이터의 종류를 가리지 않는다. <br>모든 자료형의 데이터를 값으로 가진다.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    const person = {<br>
+                        name : "Giselle Caudill",<br>
+                        age: 20,<br>
+                        isAdult: true<br>
+                        printInfo: function(){<br>
+                            console.log('printInfo');<br>
+                        }<br>
+                    };
+                </td>
+                <td>
+                    객체 안에 또다른 객체나 함수가 들어갈 수도 있다. <br>이때, 객체의 속성값으로 들어간 함수를 메서드(method)라고 한다.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    const person = {<br>
+                        "phone number" = "010-xxxx-xxxx"<br>
+                    };
+                </td>
+                <td>
+                    보통 객체의 키는 문자열로 작성하는데, 따옴표를 표시하지 않아도 된다. 그러나 옆처럼 키에 공백이 포함될 경우 따옴표를 꼭 사용해야 한다.
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+    <br>
+    <h2>객체 속성</h2>
+    <h3>객체 속성에 접근하기</h3>
+    <p>배열에서는 데이터에 접근할 때 인덱스를 사용했다. 객체에서는, 두가지 방식으로 속성에 접근할 수 있다.</p>
+    <h4>1. 대괄호 연산자</h4>
+    <p>[]를 사용해 객체의 속성에 접근하는 방법으로, 배열에서도 사용할 수 있다. 객체의 속성에 접근하려면 객체명 뒤에 대괄호를 붙이고, 대괄호 안에 키를 넣는다.
+    <fieldset>
+        <legend>대괄호 연산자 접근</legend>
+        <table>
+            <tr>
+                <th>예시</th>
+                <th>설명</th>
+            </tr>
+            <tr>
+                <td>
+                    const person = {<br>
+                        name: "Giselle Caudill",<br>
+                        age: 20;<br>
+                    };<br>
+                </td>
+                <td>
+                    <p>
+                        console.log(person["name"]); // Giselle Caudill<br>
+                        console.log(person["age"]); // 20
+                    </p>
+                    <p>
+                        대괄호 안에 키를 작성할 때는 반드시 큰따옴표나 작은따옴표로 감싼 문자열 형태로 작성한다.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="4">
+                    const person = {<br>
+                        name: {<br>
+                            firstName: "Giselle",<br>
+                            lastName: "Caudill"<br>
+                        },<br>
+                        likes: ["Benjamin", "tomato"],<br>
+                        printHello: function(){<br>
+                            return "hello";<br>
+                        }<br>
+                    };
+                </td>
+                <td>
+                    <p>
+                        console.log(person["name"]);<br>
+                        // { firstName: 'Giselle', lastName: 'Caudill' }
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        person 객체의 name 속성에 값으로 할당된 객체의 firstName 속성에 접근하기
+                    </p>
+                    <p>
+                        console.log(person["name"]["firstName"]);<br>
+                        // Giselle
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        배열의 요소에는 인덱스로 접근한다.
+                    </p>
+                    <p>
+                        console.log(person["likes"][0]);<br>
+                        // Benjamin
+                    </p>
+                    <p>
+                        console.log(person["likes"][1]);<br>
+                        // tomato
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        함수를 호출할 때는 ()를 사용한다.
+                    </p>
+                    <p>
+                        console.log(person["printHello"]);<br>
+                        // [Function: printHello]
+                    </p>
+                    <p>
+                        console.log(person["printHello"]());<br>
+                        // hello
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+    <h4>2. 마침표 연산자</h4>
+    <p>마침표 연산자는 .를 이용해 객체 속성에 접근한다. 객체 속성에 접근하려면 접근할 객체명과 객체 속성의 키를 마침표 연산자로 연결하면 된다.</p>
+    <fieldset>
+        <legend>마침표 연산자 접근</legend>
+        <table>
+            <tr>
+                <th>예시</th>
+                <th>설명</th>
+            </tr>
+            <tr>
+                <td rowspan="4">
+                    const person = {<br>
+                        name: {<br>
+                            firstName: "Giselle",<br>
+                            lastName: "Caudill"<br>
+                        },<br>
+                        age: 20,<br>
+                        likes: ["Benjamin", "tomato"],<br>
+                        printHello: function(){<br>
+                            return "hello";<br>
+                        }<br>
+                    };
+                </td>
+                <td>
+                    <p>
+                        console.log(person.name.firstName);<br>
+                        // Giselle
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        console.log(person.age);<br>
+                        // 20
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        배열의 요소에는 인덱스로 접근한다.
+                    </p>
+                    <p>
+                        console.log([person.likes[0]);<br>
+                        // Benjamin
+                    </p>
+                    <p>
+                        console.log([person.likes[1]);<br>
+                        // tomato
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        함수를 호출할 때는 ()를 사용한다.
+                    </p>
+                    <p>
+                        console.log(person.printHello());<br>
+                        // hello
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    마침표 연산자를 사용할 때는 따옴표를 사용하지 않고 키를 바로 적는다.
+                </th>
+            </tr>
+        </table>
+    </fieldset>
+    <h4>* 유의할 점</h4>
+    <p>객체의 키 식별자에 공백이 있다면, 마침표 연산자는 사용할 수 없고 대괄호 연산자만 접근할 수 있다.</p>
+    <fieldset>
+        <legend>공백이 있는 키</legend>
+        <table>
+            <tr>
+                <td>
+                    <p>
+                        const person= {<br>
+                            "phone number": "010-xxxx-xxxx"<br>
+                        };
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        console.log(person["phone number"]);<br>
+                        // 010-xxxx-xxxx
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+    <h3>객체 속성 값 변경하기</h3>
+    <p>객체로 정의된 값을 바꾸고 싶다면, 키로 속성에 접근해서 값을 재할당하면 된다.</p>
+    <fieldset>
+        <legend>객체 속성 값 변경</legend>
+        <table>
+            <tr>
+                <td>
+                    <p>
+                        const person= {<br>
+                            name: "Giselle"
+                        };
+                    </p>
+                    <p>
+                        person.name = "Benjamin";
+                        또는
+                        person["name"] = "Benjamin";
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        console.log(person.name);<br>
+                        // Benjamin
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+    <h3>객체 속성 동적으로 추가하기</h3>
+    <p>객체 속성에 키로 접근해 값을 재할당하면 기존 속성값을 바꿀 수 있다, 그런데 해당 키가 객체에 존재하지 않았다면?<br> -> 새로운 속성이 객체에 추가된다.</p>
+    <fieldset>
+        <legend>객체 속성 값 추가</legend>
+        <table>
+            <tr>
+                <th>예시</th>
+                <th>설명</th>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        const person= {};
+                        console.log(person); // {}
+                    </p>
+                    <p>
+                        person.name = "Giselle";
+                        console.log(person); // {name: 'Giselle'}
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        빈 객체를 생성해 변수에 할당한 후, 객체의 속성에 접근해 값을 변경할 때처럼 키에 값을 할당한다.
+                    </p>
+                    <p>
+                        처음에는 빈 객체였는데, 나중에 name속성이 추가된 것을 볼 수 있다.
+                    </p>
+                    <p>
+                        이처럼 객체 속성에 값을 할당해 접근하면 해당 속성이 존재하는지 확인하고, 없는 속성이면 해당 키와 값으로 구성된 새로운 속성을 객체에 추가한다.
+                    </p>
+                </td>
+                <tr>
+                    <th colspan="2">
+                        이미 만들어진 객체에 나중에 속성을 추가하는 것을<br> 자바스크립트에서는 '속성을 동적으로 추가한다'고 한다
+                    </th>
+                </tr>
+            </tr>
+        </table>
+    </fieldset>
+    <h3>객체 속성 동적으로 삭제하기</h3>
+    <p>객체에 속성을 동적으로 추가하듯이 동적으로 삭제할 수도 있다. 객체 속성에 접근할 때 앞에 delete 키워드를 명시하면 해당 속성이 삭제된다.</p>
+    <fieldset>
+        <legend>객체 속성 값 삭제</legend>
+        <table>
+            <tr>
+                <th>예시</th>
+                <th>설명</th>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        const person= {<br>
+                            name: "Giselle"<br>
+                        };
+                    </p>
+                    <p>
+                        delete person.name;<br>
+                        또는<br>
+                        delete person["name"];
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        console.log(person);<br>
+                        // {} 출력
+                    </p>
+                    <p>
+                        person 객체의 하나뿐인 name 속성을 삭제한 후이므로 빈 객체가 출력된다.
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+    <h3>객체의 데이터 관리 방법 이해하기</h3>
+    <p>const 키워드로 선언한 상수 변수는 재할당이 불가능하다. 그런데 const 키워드로 선언한 상수 변수에 할당한 객체에는 속성을 추가하거나 삭제할 수 있다. 객체 자료형의 특성인 참조(reference)때문이다.</p>
+    <h4>깊은 복사(deep copy) : 기본 자료형의 데이터 관리</h4>
+    <p>기본 자료형은 변수에 데이터를 할당할 때 데이터 그 자체가 할당된다.</p>
+    <fieldset>
+        <legend>깊은 복사</legend>
+        <table>
+            <tr>
+                <th>예시</th>
+                <th>설명</th>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        let num = 10;<br>
+                        let copyNum = num;<br>
+                        // 변수 num의 데이터를 변수 copyNum에 할당
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        변수 num의 데이터를 변수 copyNum에 다시 할당하면, 기본 자료형에서는 자신의 공간에 담고있던 데이터를 그대로 복사해 전달한다.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        let num = 10;<br>
+                        let copyNum = num;<br>
+                        num = 20; // 변수 num을 재할당
+                    </p>
+                    <p>
+                        console.log(num); // 20<br>
+                        console.log(copyNum); // 10
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        변수 num의 값만 변경되고, 변수 copyNum의 값은 변경되지 않는다. 두 데이터는 연동되어 있지 않다.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">복사한 값을 재할당할때 한쪽 데이터가 변경되어도<br> 서로 영향을 미치지 않게 복사되는 것을 '깊은 복사'라고 한다.</th>
+            </tr>
+        </table>
+    </fieldset>
+    <h4>얕은 복사(shallow copy) : 참조 자료형(객체)의 데이터 관리</h4>
+    <p>기본 자료형과 다르게 객체와 같은 참조 자료형은 변수 공간에 데이터가 할당되는 것이 아니고, 데이터가 위치하고 있는 메모리의 주소 값만 할당된다.</p>
+    <p>이를 자바스크립트에서는 <strong>참조한다</strong>고 표현한다.</p>
+    <fieldset>
+        <legend>얕은 복사</legend>
+        <table>
+            <tr>
+                <th>예시</th>
+                <th>설명</th>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        const person = {<br>
+                            name: "Giselle Caudill"<br>
+                        };
+                    </p>
+                    <p>
+                        const person = {<br>
+                            name: "Benjamin Ryan"<br>
+                        };
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        결과<br>
+                        TypeError: Assignment to constant variable
+                    </p>
+                    <p>
+                        변수에 다른 객체를 재할당하려고 하면, const 키워드는 재할당되지 않으므로 바로 오류가 발생한다.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        const person = {<br>
+                            name: "Giselle Caudill"<br>
+                        };<br>
+                        person.name = "Giselle";
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        하지만 변수에 할당된 객체에 속성을 추가하거나 변경하는 건 가능하다.
+                    </p>
+                    <p>
+                        why?<br>
+                        변수 person입장에서는 데이터를 재할당하는 것이 아니기 때문!
+                    </p>
+                    <p>
+                        변수에 할당된 객체의 주소 값은 그대로이고, 주소 값이 참조하는 원본 객체 데이터만 변경되기 때문에 기존 데이터를 변경하거나 새로운 속성을 추가할 수 있다.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">위 특징은 변수끼리 데이터를 복사할 때 도드라지게 나타난다.</th>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        const person = {<br>
+                            name: "Giselle Caudill"<br>
+                        };<br>
+                        const copyPerson = person; // 변수 person에 할당된 객체를 변수 copyPerson에 복사<br>
+                        person.name = "Giselle"; // 변수 person에 할당된 객체의 값을 변경
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        console.log(person.name); // Giselle<br>
+                        console.log(copyPerson.name); // Giselle
+                    </p>
+                    <p>
+                        변수 person에 할당된 객체의 속성값을 변경했는데, 변수 copyPerson에 복사된 객체의 속성값까지 변경된다.
+                    </p>
+                    <p>
+                        이는 객체가 변수에 할당될 때, 변수는 주소 값만 가지고 있어서 복사할 때도 주소값만 복사하기 때문이다.<br>
+                        그래서 두 변수는 같은 주소값을 가지게 되고, 바라보는 원본 데이터의 위치도 같게 된다.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">데이터를 복사했을 때 한쪽 데이터가 변경되면<br> 다른 쪽 데이터도 변경되어 서로 영향을 받는 것을 '얕은 복사'라고 한다.</th>
+            </tr>
+        </table>
+    </fieldset>
+</body>
+</html>

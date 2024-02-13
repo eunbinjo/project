@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function</title>
+    <style>
+        table{
+           border-collapse: collapse;
+       }
+       caption, th {
+           border: 1px solid #ccc;
+           text-align: center;
+       }
+       td {
+           border: 1px solid #ccc;
+           text-align: left;
+           width: 250px;
+       }
+   </style>
+</head>
+<body>
+    <h1>Function</h1>
+    <h2>함수란?</h2>
+    <p>자바스크립트에서 함수(function)은 어떤 목적을 가지고 작성한 코드를 모아둔 블록문이다. 코드를 함수로 만들면 함수를 호출해 함수 내부에 모아 둔 여러 줄의 코드를 한 번에 실행할 수 있다. -> 재사용이 편해짐</p>
+    <fieldset>
+        <legend>구구단 3단 함수</legend>
+        <p>
+            function gugudan(){ //함수 시작 <br>
+                for(let i = 1; i < 10; i++){ <br>
+                console.log(`3 * ${i} = ${3 * i}`);<br>
+                }
+            } //함수 끝
+        </p>
+    </fieldset>
+    <p>블록문을 function 키워드, 식별자, 소괄호와 함께 묶으면 함수가 생성되는데, 이를 <strong>함수를 정의한다</strong>고 한다.</p>
+    <br>
+    <h2>함수를 정의하는 방법</h2>
+    <p>자바스크립트에서 함수는 함수 선언문(function declaration statement), 함수 표현식(function expression), 화살표 함수(arrow function)등을 사용해 정의한다.</p>
+    <h3>함수 선언문</h3>
+    <p>함수 선언문은 function 키워드로 함수를 정의하는 방법이다.</p>
+    <fieldset>
+        <legend>함수 선언문</legend>
+        <table>
+            <tr>
+                <th></th>
+                <th>형식</th>
+                <th>함수 실행</th>
+            </tr>
+            <tr>
+                <th>기본</th>
+                <td>
+                    <p>function 식별자(){}</p>
+                </td>
+                <td>함수명();</td>
+            </tr>
+            <tr>
+                <th>예시</th>
+                <td>
+                    function gugudan() {<br>
+                        for(let i = 1; i < 10; i++){<br>
+                            console.log(`3 * ${i} = ${3 * i}`);<br>
+                        }<br>
+                    }
+                </td>
+                <td>gugudan();</td>
+            </tr>
+        </table>
+    </fieldset>
+    <p>function 키워드 다음에 함수를 식별할 수 있도록 식별자를 붙이고, 식별자 뒤에 소괄호(())를 붙인다. 이때 식별자의 명명 규칙은 변수명을 생성할 때와 같다. 식별자 뒤에 오는 중괄호({})에는 함수가 호출되면 실행할 코드를 적는다. 이때, 코드는 길이, 개수 등의 제한 없이 자유롭게 적으면 된다.</p>
+    <p>이렇게 함수를 정의하고 나면, 함수의 식별자(함수명)과 소괄호를 열었다가 닫아주는 형식으로 함수를 실행할 수 있다.</p>
+    <h3>함수 표현식</h3>
+    <p>함수는 객체에서 파생된 자료형이다. 자바스크립트에서 자료형은 변수에 할당할 수 있으므로, 함수도 변수에 할당할 수 있다. 이를 이용한 함수 정의 방법을 함수 표현식이라고 한다.</p>
+    <p>함수 표현식은 변수에 할당하는 함수에 식별자가 있으면 네이밍 함수(naming function), 없으면 익명 함수(anonymous function)이라고 한다.</p>
+    <fieldset>
+        <legend>함수 표현식</legend>
+        <table>
+            <tr>
+                <th></th>
+                <th>형식</th>
+                <th>함수 실행</th>
+            </tr>
+            <tr>
+                <th>기본</th>
+                <td>
+                    <p>const 변수명 = function(){} -> 익명 함수</p>
+                    <p>const 변수명 = function 식별자(){} -> 네이밍 함수</p>
+                </td>
+                <td>변수명();</td>
+            </tr>
+            <tr>
+                <th>예시</th>
+                <td>
+                    const gugudan = function gugudan() {<br>
+                        for(let i = 1; i < 10; i++){<br>
+                            console.log(`3 * ${i} = ${3 * i}`);<br>
+                        }<br>
+                    };
+                </td>
+                <td>gugudan();</td>
+            </tr>
+        </table>
+    </fieldset>
+    <p>이때, 함수 표현식으로 정의한 함수를 호출할 때는, 함수명이 아닌 변수명을 사용한다. 네이밍 함수의 함수명을 호출하게 될 경우, 오류가 생긴다. -> 네이밍 함수로 표현하되, 함수명과 변수명을 통일시키면 방지할 수 있다.</p>
+    <p>더하여 함수 표현식으로 함수를 정의할 때는 const 키워드를 주로 사용한다. 보통 함수는 일관된 목적을 가진 코드 집합이라서 재정의해서도, 재할당해서도 안 되는 경우가 많기 때문이다.</p>
+    <h3>화살표 함수</h3>
+    <p>화살표 (=>) 를 사용해 함수를 정의하는 방법. 화살표 함수는 익명 함수로만 정의할 수 있어서, 함수를 호출하려면 정의된 함수를 변수에 할당하는 방법인 함수 표현식을 사용해야 한다.</p>
+    <fieldset>
+        <legend>화살표 함수</legend>
+        <table>
+            <tr>
+                <th></th>
+                <th>형식</th>
+                <th>함수 실행</th>
+            </tr>
+            <tr>
+                <th>기본</th>
+                <td>
+                    <p>const 변수명 = () => {};</p>
+                </td>
+                <td>변수명();</td>
+            </tr>
+            <tr>
+                <th>예시</th>
+                <td>
+                    const gugudan = () => {<br>
+                        for(let i = 1; i < 10; i++){<br>
+                            console.log(`3 * ${i} = ${3 * i}`);<br>
+                        }<br>
+                    };
+                </td>
+                <td>gugudan();</td>
+            </tr>
+        </table>
+    </fieldset>
+    <br>
+    <h2>함수 기능 확장하기</h2>
+    <h3>Parameter(매개 변수)와 Argument(인수)</h3>
+    <p>Parameter(매개 변수)<br>함수를 정의할 때 외부에서 전달하는 데이터를 함수에서 받을 수 있도록 정의하는 변수다.</p>
+    <p>Argument(인수)<br>정의한 함수를 호출할 때 소괄호 안에 전달하고 싶은 데이터를 적는데, 이를 argument(인수)라고 한다. 인수는 함수 호출시 전달하는 데이터 즉, 함수의 매개변수에 자동으로 할당된다.</p>
+    <fieldset>
+        <legend>파라미터를 이용해 함수를 정의하는 기본 형식</legend>
+        <table>
+            <tr>
+                <th></th>
+                <th>형식</th>
+                <th>함수 실행</th>
+            </tr>
+            <tr>
+                <th>기본</th>
+                <td>
+                    <p>
+                        1. 함수 선언문<br>
+                        function 함수명 (p1, p2, p3..., pn) {}
+                    </p>
+                    <p>
+                        2. 함수 표현식<br>
+                        const 변수명 = function 식별자 (p1, p2, p3..., pn) {};
+                    </p>
+                    <p>
+                        3. 화살표 함수<br>
+                        const 변수명 = (p1, p2, p3..., pn) => {};
+                    </p>
+                </td>
+                <td>변수명(a1, a2, a3..., an);</td>
+            </tr>
+            <tr>
+                <th>예시</th>
+                <td>
+                    <p>
+                        function gugudan(dan){<br>
+                            for(let i = 1; i < 10; i++){<br>
+                                console.log(`${dan} * ${i} = ${dan * i}`);<br>
+                            }<br>
+                        }
+                    </p>
+                </td>
+                <td>
+                    gugudan(3);<br>
+                    gugudan(5);<br>
+                    gugudan(9);
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+    <h3>파라미터의 특징</h3>
+    <h4>1. 명명 규칙</h4>
+    <p>파라미터는 일반적으로 변수와 같다. 변수의 특징을 가지고 있으므로 명명 규칙 또한 변수의 명명 규칙에 따른다.</p>
+    <h4>2. 데이터 전달</h4>
+    <p>함수의 파라미터는 함수를 정의할 때 함께 정의되고, 함수 호출 시 전달된 데이터와 일대일로 대응되어 할당된다.</p>
+    <p>파라미터는 개수 제한이 없기 때문에 여러 개를 생성할 수 있지만, 지저분해 보일 수 있으니 최소한으로 정의하는 게 좋다.</p>
+    <p>파라미터에 데이터를 전달하지 않는 경우, 변수에 값을 할당하지 않았을 때와 같이 undefined 값이 할당되어 함수를 실행해도 오류가 발생하지 않는다. 반대로 파라미터를 정의하지 않고 데이터를 전달한다면, 이 역시 오류가 나지는 않지만 전달할 데이터를 받을 파라미터가 없어 값을 사용할 수 없다.</p>
+    <h4>3. 기본값 할당</h4>
+    <p>파라미터에 직접 데이터를 할당하는 방식으로 단순하게 기본값을 지정할 수 있다.</p>
+    <fieldset>
+        <legend>기본값 할당</legend>
+        <p>
+            function sum(a = 10, b = 10){<br>
+                console.log(a, b)<br>
+            }<br>
+            sum(); // 10, 10
+        </p>
+    </fieldset>
+    <br>
+    <h2>return 문</h2>
+    <p>함수를 호출할 때 데이터를 전달하려면 파라미터를 정의해야 하듯, 함수 외부로 데이터를 반환할 때는 return 문을 사용한다.</p>
+    <p>함수 외부에서 함수 내부의 변수를 참조하려고 할 때, 오류가 나지 않게 하려면 return 문으로 함수 내부의 데이터를 함수 외부로 전달해야 한다.</p>
+    <fieldset>
+        <legend>return 문</legend>
+        <table>
+            <tr>
+                <th></th>
+                <th>예시</th>
+                <th>함수 실행</th>
+            </tr>
+            <tr>
+                <th>1</th>
+                <td>
+                    <p>
+                        function sum(num1, num2) {
+                            let result = num1 + num2;
+                            return result;
+                        }
+                    </p>
+                    <p>
+                        const result = sum(10, 20);
+                        console.log("out: " + result);
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        out: 30
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <th>2</th>
+                <td>
+                    <p>
+                        function sum(num1, num2) {
+                            return num1 + num2;
+                        }
+                    </p>
+                    <p>
+                        const result = sum(10, 20);
+                        console.log("out: " + result);
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        out: 30
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <p>위 1번 코드에서 sum 함수 내부 변수인 result가 return문에 작성되어 있다. 이처럼 return 문을 사용하면 함수 내부 변수인 result에 할당된 값, 즉 데이터가 sum()함수를 호출한 곳으로 전달된다. 이를 <strong>반환한다</strong>고 하며, 이때 반환된 데이터를 <strong>반환값</strong>이라고 한다.</p>
+        <p>반환된 데이터를 함수 외부에서 사용하려면 함수 호출 부분에서 반환값을 다시 변수에 할당해야 한다.</p>
+        <p>2번 코드처럼, 데이터를 반환할 때는 return 문에 꼭 변수를 사용해야하는 것은 아니고 표현식으로도 데이터를 반환할 수 있다.</p>
+    </fieldset>
+    <p>더하여, return 문은 데이터를 반환하지 않으면 단순히 함수 실행을 종료하는 역할을 하게 된다.</p>
+    <fieldset>
+        <legend>함수 즉시 종료</legend>
+        <table>
+            <tr>
+                <th>예시</th>
+                <th>함수 실행</th>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        function sum(num1, num2) {<br>
+                            if(typeof num1 !== "number" || typeof num2 !== "number"){<br>
+                                return; <br>
+                                //매개변수가 숫자가 아니면 강제 종료<br>
+                            }<br>
+                            return num1 + num2;<br>
+                        }
+                    </p>
+                    <p>
+                        let result = sum("a", "b");<br>
+                        console.log("out: " + result);<br>
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        out: undefined
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+    <h4>화살표 함수와 return 문</h4>
+    <p>화살표 함수에서 {}를 생략하면 화살표 다음에 오는 코드는 return 문으로 처리된다.</p>
+    <fieldset>
+        <legend>화살표 함수 return 문</legend>
+        <table>
+            <tr>
+                <th>예시</th>
+                <th>함수 실행</th>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        const sum = (num1, num2) => num1 + num2;
+                    </p>
+                    <p>
+                        const result = sum(10, 20);
+                        console.log(result);
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        30
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+    <br>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IIFE</title>
+</head>
+<body>
+    <h1>즉시 실행 함수(IIFE, Immediately Invoked Function Expression)</h1>
+    <p>함수를 정의하면서 동시에 실행까지 하는 함수.</p>
+    <fieldset>
+        <legend>형식</legend>
+        <p>(function(){})();</p>
+    </fieldset>
+    <p>한 번만 사용할 함수나 변수를 const 키워드를 사용해 정의해, 어떤 식별자를 더이상 사용할 수 없게 되는 현상을 가리켜 <strong>글로벌 스코프가 오염됐다</strong>고 표현한다. 이런 경우, 즉시 실행 함수를 사용하면 글로벌 스코프가 오염되는 것을 방지할 수 있다.</p>
+    <fieldset>
+        <legend>즉시 실행 함수 예시</legend>
+        <p>
+            (function init(){<br>
+            console.log("initialixed!");<br>
+        })();<br>
+        </p>
+    </fieldset>
+    <p>즉시 실행 함수는 한 번 실행되고 나면 메모리에 데이터가 남지 않는다. 그래서 위의 init 식별자는 한 번도 사용되지 않은 것처럼 인식된다.</p>
+    <p>파라미터가 있는 함수도 즉시 실행 함수로 정의해서 실행할 수 있다.</p>
+    <fieldset>
+        <legend>파라미터 함수의 즉시 실행 예시</legend>
+        <p>
+            (function sum(a, b){<br>
+                console.log(a + b);<br>
+            })(10, 20);
+        </p>
+        <p>실행 결과 : 30</p>
+    </fieldset>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>If and Switch</title>
+    <style>
+        table{
+           border-collapse: collapse;
+       }
+       caption, th {
+           border: 1px solid #ccc;
+           text-align: center;
+       }
+       td {
+           border: 1px solid #ccc;
+           text-align: center;
+           width: 200px;
+       }
+   </style>
+</head>
+<body>
+    <h1>조건문</h1>
+    <h2>if, else, else if 문</h2>
+    <h3>1. if 문</h3>
+    <p>if 문은 if 뒤에 오는 소괄호(()) 안의 조건식이 참으로 평가되면 중괄호({})안의 코드를 실행하는 조건문이다. 이때 조건식은 숫자를 써도, 문자열을 써도, undefined를 써도, null을 써도 무조건 참/거짓으로 평가된다.</p>
+    <fieldset>
+        <legend>특정 숫자가 짝수인지 판단하는 프로그램</legend>
+        <p>
+            let num = 10;<br>
+            if (num % 2 === 0) {<br>
+                console.log('변수 num에 할당된 숫자는 짝수입니다.');<br>
+            }
+        </p>
+    </fieldset>
+    <h3>2. else 문</h3>
+    <p>else 문은 if 문의 조건식이 거짓일 때 실행되는 블록문을 정의한다.</p>
+    <fieldset>
+        <legend>특정 숫자가 홀수일 때 메시지 출력</legend>
+        <p>
+            let num = 5;<br>
+            if (num % 2 === 0) {<br>
+                comsole.log('변수 num에 할당된 숫자는 짝수입니다.');<br>
+            } else {<br>
+                console.log('변수 num에 할당된 숫자는 홀수입니다.');<br>
+            }
+        </p>
+    </fieldset>
+    <p>이렇듯 else 문은 if 문 없이 단독으로 사용할 수 없으며, 하나의 if 문에는 하나의 else 문만 사용할 수 있다.</p>
+    <h3>3. else if 문</h3>
+    <p>else if 문은 if 문에 조건을 추가하고 싶을 때 사용한다. else if 문의 개수에는 제한이 없지만, 단독으로 사용할 수 없으며 항상 if 문 다음에 사용하고 else문 보다는 먼저 사용해야 한다.</p>
+    <fieldset>
+        <legend>특정 숫자가 양수인지 음수인지 0인지</legend>
+        <p>
+            let num = 0;<br>
+            if (num > 0) {<br>
+                console.log('num은 양수다.');<br>
+            } else if (num < 0) {<br>
+                console.log('num은 음수다.');<br>
+            } else {<br>
+                console.log('num은 0이다.');<br>
+            }
+        </p>
+    </fieldset>
+    <h3>4. 중첩하기</h3>
+    <p>어떤 조건식을 만족할 때 어떤 블록문을 실행할지 결정하는 것을 <strong>분기 처리</strong>라고 한다. if문은 작성하려는 코드의 분기 처리에 따라 중첩해서 사용할 수 있다. 이때, 중첩 횟수에는 제한이 없다.</p>
+    <p>그러나 이렇게 중첩한 if문의 경우 많이 복잡해지기 때문에, 실무에서는 잘 사용하지 않는다. 다만 if 문이든 else if문이든 else문이든 중첩할 수 있다는 사실을 알아두자.</p>
+    <br>
+    <h2>switch 문</h2>
+    <p>switch 문은 switch 뒤에 오는 소괄호 안의 값과 일치하는 case 문이 있을 때 해당 코드를 실행하는 조건문이다. 일치 여부 확인은 일치 연산자(===)를 사용한 비교 연산처럼 값과 자료형을 함께 비교한다.</p>
+    <p>switch 문에는 하나 이상의 case 문과 default 문, break 문을 사용한다.</p>
+    <fieldset>
+        <legend>입력한 변수의 값이 과일인지 야채인지</legend>
+        <p>
+            let food = 'melon';<br>
+            switch(food){<br>
+                case "melon":<br>
+                console.log('fruit');<br>
+                break;<br>
+                case "apple":<br>
+                console.log('fruit');<br>
+                break;<br>
+                case "banana":<br>
+                console.log('fruit');<br>
+                break;<br>
+                case "carrot":<br>
+                console.log('vegetable');<br>
+                break;<br>
+                default:<br>
+                console.log('It's not fruits and vegetables.');<br>
+                break;<br>
+            }
+        </p>
+    </fieldset>
+    <p>switch문의 소괄호 안에 넣은 값과, 자료형이 일치하는 case 문의 코드가 실행된다. 이때 실행되는 블록문은 break 문을 만나지 전까지 실행된다.</p>
+    <p>즉, break 문은 코드 실행을 멈춘다.</p>
+    <p>마지막에 있는 default 문에는 if문의 else문 처럼, 일치하는 case 문이 없을 시 기본으로 실행되는 코드를 적는다.</p>
+    <fieldset>
+        <legend>break 문을 일부러 생략할 때</legend>
+        <p>
+            let food = 'melon';<br>
+            switch(melon) {<br>
+            case "melon":<br>
+            case "apple":<br>
+            case "banana":<br>
+            console.log('fruit');<br>
+            break;<br>
+            case "carrot":<br>
+            console.log('vegetable');<br>
+            break;<br>
+            default:<br>
+            console.log('It's not fruits and vegetables.');<br>
+            break;<br>
+        }
+        </p>
+    </fieldset>
+    <p>위 예시의 경우 switch 문은 소괄호 안의 값과 일치하는 case 문을 찾을 때까지 연속해서 실행한다.</p>
+    <p>더하여, default 문은 생략해도 되지만 switch 문에는 case 문과 default 문 중 하나 이상은 있어야 한다.</p>
+    <br>
+    <h2>if 문과 조건식</h2>
+    <p>if 문은 조건에 식을 사용한다. 논리 연산자나 비교 연산자를 식에 사용할 수 있다.</p>
+    <fieldset>
+        <legend>점수가 90점 이상일 때, A++학점이라고 출력하기</legend>
+        <p>
+            let score = 90;<br>
+            if (score >= 90) {<br>
+            console.log('A++');<br>
+        }
+        </p>
+    </fieldset>
+    <fieldset>
+        <legend>점수가 100점보다는 낮다는 조건을 추가하고 싶을 때</legend>
+        <p>
+            let score = 90;<br>
+            if (score >= 90 && score <= 100) {<br>
+            console.log('A++');<br>
+        }
+        </p>
+    </fieldset>
+    <p>and 연산자는 피연산자를 평가해 모두 참이면 마지막에 평가되는 피연산자를 반환한다. 따라서 결과로 피연산자 score <= 100 이 반환되고, 이것은 참이므로 if문의 조건식이 참이 되어 블록문이 실행된다.</p>
+    <br>
+    <h2>if 문 vs switch 문</h2>
+    <p>if 문과 switch 문은 결정적으로 조건의 형태에서 차이가 난다. if 문은 조건에 식(statement)를 사용하고, switch 문은 조건에 값(value)을 사용한다.</p>
+    <p>switch 문은 조건을 값을 받기 때문에, 값이 범위일 때는 모든 값을 일일히 case문으로 정의해야한다. 따라서 범위를 이용한 조건을 작성할 때는 if문이 적합하다. 그러나 값이 하나 일때는 switch문이 더 적합하다.</p>
+</body>
+</html>
