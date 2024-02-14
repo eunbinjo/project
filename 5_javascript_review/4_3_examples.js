@@ -123,11 +123,9 @@ console.log(minMaxRandom);
 // 1분 퀴즈
 
 const array = [10, 120, 30, 50, 20];
+array.sort((a, b) => b - a); //내림차순 정렬
 
-const maxNum = 0;
-array.forEach((i) => {
-    if (maxNum < i){
-        maxNum = array[i]
-    };
-    console.log(maxNum);
-}); 
+console.log(array[0]);
+
+// sort()
+// a인자와 b인자를 비교해서 음수를 반환하면 내버려두고, 양수를 반환하면 자리를 바꾼다.

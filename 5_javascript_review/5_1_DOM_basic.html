@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Basic</title>
+    <style>
+        table{
+           border-collapse: collapse;
+       }
+       caption, th {
+           border: 1px solid #ccc;
+           text-align: center;
+           height: 1.8em;
+       }
+       td {
+           border: 1px solid #ccc;
+           text-align: left;
+           padding-left: 0.3em;
+           height: 1.8em;
+       }
+       table table {
+        font-size: 0.8em;
+       }
+   </style>
+</head>
+<body>
+    <h1>문서 객체 모델 (DOM, Documet Object Model)</h1>
+    <p>웹 브라우저에 표시되는 HTML 문서 구조를 객체화 한 모델 구조.<br> -> 웹 브라우저는 생성한 문서 객체모델을 통해 HTML 문서의 구성요소를 객체로 인식하고,<br> -> 자바스크립트로 하여금 웹 브라우저의 문서 객체 모델을 조작해 웹 브라우저에 표시되는 HTML 문서 구조를 변경하거나, 새로운 구성 요소를 추가하는 등의 작업을 할 수 있다.</p>
+    <br>
+    <h2>문서 객체 모델이 생성되는 방식</h2>
+    <p>
+        1. 웹 브라우저가 HTML 문서를 해석한다.<br>
+        2. 해석한 HTML 문서 구조를 객체로 변환한다.
+    </p>
+    <p>따라서 웹 브라우저에 표시되는 HTML 문서는 내부적으로 문서 객체 모델을 해석해서 보이게 된다.</p>
+    <p>이때, 문서 객체 모델은 나무를 뒤집어 놓은 형태의 자료구조인 트리 구조를 가지게 된다. 이를 <strong>DOM 트리</strong>라고 한다.</p>
+</body>
+</html>
