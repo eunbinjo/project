@@ -182,10 +182,297 @@
                     <p>
                         실행 결과 : Tue Feb 13 2024 18:31:37 GMT+0900 (한국 표준시)
                     </p>
-                    new 키워드로 Date 객체를 호출하면 현재 날짜와 시간 정보를 기반으로 날짜와 시간 데이터가 생성된다.
+                    <p>
+                        new 키워드로 Date 객체를 호출하면 현재 날짜와 시간 정보를 기반으로 날짜와 시간 데이터가 생성된다.
+                    </p>
                 </td>
             </tr>
         </table>
     </fieldset>
+    <p>인스턴스는 연, 월, 일, 시, 분, 초의 특정한 정보를 부여해 생성할 수도 있다.</p>
+    <fieldset>
+        <legend>특정한 날짜를 부여해 인스턴스 생성하기</legend>
+        <table>
+            <tr>
+                <th style="width: 100px;">구분</thㄴ>
+                <th style="width: 200px;">예시</th>
+                <th style="width: 450px;">설명</th>
+            </tr>
+            <tr>
+                <td>정보를 숫자로 전달</td>
+                <td>
+                    <p>
+                        const date1 = new Date(2022, 11, 25);<br>
+                        const date2 = new Date(2022, 11, 25, 18, 30, 50);<br>
+                        console.log(date1);<br>
+                        console.log(date2);
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        실행 결과 : Sun Dec 25 2022 00:00:00 GMT+0900 (한국 표준시)<br>
+                        실행 결과 : Sun Dec 25 2022 18:30:50 GMT+0900 (한국 표준시)
+                    </p>
+                    <p>
+                        정보를 숫자로 전달해 Date 인스턴스를 생성할 때, 월은 0부터 시작하므로 주의해야 한다.<br>
+                        1월은 0, 12월은 11로 표기한다.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>정보를 문자열로 전달</td>
+                <td>
+                    <p>
+                        const date1 = new Date("2022-11-25");<br>
+                        const date2 = new Date("2022/11/25/18/30/50");<br>
+                        console.log(date1);<br>
+                        console.log(date2);
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        실행 결과 : Sun Dec 25 2022 00:00:00 GMT+0900 (한국 표준시)<br>
+                        실행 결과 : Sun Dec 25 2022 18:30:50 GMT+0900 (한국 표준시)
+                    </p>
+                    <p>
+                        정보를 문자열로 전달해 Date 인스턴스를 생성할 때는 월을 그대로 전달해도 괜찮다.
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+    <h3>메서드로 날짜와 시간 정보 가져와서 설정하기</h3>
+    <p>날짜와 시간 데이터를 Date 객체의 인스턴스로 만들었을 때 가장 불편한 점은, 현실에서 사용하는 형식과 다르다는 점이다. (주로 사용하는 방식은 2022-12-25 18:30:50 과 같은 형식이므로)</p>
+    <p>그래서 Date 객체의 인스턴스에 할당된 날짜와 시간을 일반적인 형식으로 가공하는 방법이 있다. -> 그중 메서드를 활용하는 방법이 가장 간단하다.</p>
+    <fieldset>
+        <legend>Date 객체의 메서드</legend>
+        <p>Date 객체에서 get으로 시작하는 메서드는 날짜와 시간 정보를 가져오고, set으로 시작하는 메서드는 날짜와 시간 정보를 설정한다.</p>
+        <table>
+            <tr>
+                <th style="width: 300px;">종류</th>
+                <th style="width: 400px;">설명</th>
+            </tr>
+            <tr>
+                <td>getFullYear() / setFullYear()</td>
+                <td>연도를 4자리 숫자로 표시한다.</td>
+            </tr>
+            <tr>
+                <td>getMonth() / setMonth()</td>
+                <td>월을 0부터 11까지의 숫자로 표시한다. (0 -> 1월, 11 -> 12월)</td>
+            </tr>
+            <tr>
+                <td>getDate() / setDate()</td>
+                <td>일을 1부터 31까지의 숫자로 표시한다.</td>
+            </tr>
+            <tr>
+                <td>getDay()</td>
+                <td>요일을 0부터 6까지의 숫자로 표시한다. (0 -> 일요일, 6 -> 토요일)</td>
+            </tr>
+            <tr>
+                <td>getTime() / setTime()</td>
+                <td>1970년 1월 1일 12:00 이후의 시간을 밀리초(1/1000초) 단위로 표시한다.</td>
+            </tr>
+            <tr>
+                <td>getHours() / setHours()</td>
+                <td>시를 0부터 23까지의 숫자로 표시한다.</td>
+            </tr>
+            <tr>
+                <td>getMinutes() / setMinutes()</td>
+                <td>분을 0부터 59까지의 숫자로 표시한다.</td>
+            </tr>
+            <tr>
+                <td>getSeconds() / setSeconds()</td>
+                <td>초를 0부터 59까지의 숫자로 표시한다.</td>
+            </tr>
+            <tr>
+                <td>getMilliseconds() / setMilliseconds()</td>
+                <td>밀리초를 0부터 999까지의 숫자로 표시한다.</td>
+            </tr>
+        </table>
+    </fieldset>
+    <br>
+    <fieldset>
+        <legend>get 메서드 예시</legend>
+        <p>Date 객체의 인스턴스에 get 메서드를 사용하면 날짜와 시간을 재구성할 수 있다.</p>
+        <table>
+            <tr>
+                <th style="width: 300px;">예시</th>
+                <th style="width: 450px;">설명</th>
+            </tr>
+            <tr>
+                <td>
+                    <p style="text-align: left;">
+                    const date = new Date(2022, 11, 25, 18, 30, 50);<br>
+                    const dateFormat = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}-${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}`;<br>
+                    console.log(dateFormat);
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        실행 결과 : 2022-12-25-18-30-50
+                    </p>
+                    <p>
+                        getMonth에 1을 더하는 이유를 유의해 코드를 살필 것.
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+    <h3>날짜 간격 계산하기</h3>
+    <p>getTime() 메서드는 1970년 1월 1일 12:00 이후의 시간을 밀리초 단위로 반환한다. 이를 이용하면, 특정한 두 날짜 사이의 간격을 구할 수 있다.</p>
+    <fieldset>
+        <legend>getTime()으로 두 날짜 사이의 텀 구하기</legend>
+        <table>
+            <tr>
+                <th style="width: 300px;">예제</th>
+                <th style="width: 400px;">설명</th>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        const date1 = new Date('2022-12-23');<br>
+                        const date2 = new Date('2022-12-25');<br>
+                        const dateDiff = date2.getTime() - date1.getTime();<br>
+                        //두 날짜 사이의 간격을 밀리초로 구함<br>
+                        const interval = dateDiff / (24 * 60 * 60 * 1000);<br>
+                        //24시간, 60분, 60초, 1000밀리초<br>
+                        console.log(`두 날짜의 차이는 ${interval}일 입니다.`);
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        getTime()메서드를 사용하면 날짜가 밀리초 단위로 반환되는데, 미래 날짜(밀리초)에서 과거 날짜(밀리초)를 뺀 뒤 나온 결괏값을 일수로 환산하면 두 날짜 사이의 간격을 구할 수 있다.
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+    <br>
+    <h2>Math 객체</h2>
+    <p>Math 객체에는 여러 가지 수학 연산을 수행하는 메서드가 정의되어 있다.</p>
+    <fieldset>
+        <legend>Math 객체의 주요 메서드</legend>
+        <table>
+            <tr>
+                <th style="width: 200px;">종류</th>
+                <th style="width: 450px;">설명</th>
+            </tr>
+            <tr>
+                <td>Math.floor()</td>
+                <td>주어진 숫자와 같거나 작은 정수 중에서 가장 큰 수를 반환한다. (내림)</td>
+            </tr>
+            <tr>
+                <td>Math.ceil()</td>
+                <td>주어진 숫자와 같거나 큰 정수 중에서 가장 작은 수를 반환한다. (올림)</td>
+            </tr>
+            <tr>
+                <td>Math.round()</td>
+                <td>주어진 숫자를 반올림한 수와 가장 가까운 정수를 반환한다. (반올림)</td>
+            </tr>
+            <tr>
+                <td>Math.random()</td>
+                <td>0 이상 1 미만의 난수를 반환한다.</td>
+            </tr>
+        </table>
+    </fieldset>
+    <p>Date 객체와는 달리, Math 객체는 new키워드와 인스턴스 없이 바로 메서드를 사용한다.</p>
+    <fieldset>
+        <legend>Math 객체의 사용</legend>
+        <table>
+                <tr>
+                    <th style="width: 300px;">예제</th>
+                    <th style="width: 400px;">설명</th>
+                </tr>
+                <tr>
+                    <td>
+                        <p>
+                            const floatNum = 10.52;
+                        </p>
+                        <p>
+                            Math.floor(floatNum); // 10
+                            Math.ceil(floatNum); // 11
+                            Math.round(floatNum); // 11
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            손쉽게 내림, 올림, 반올림처리를 할 수 있다.
+                        </p>
+                    </td>
+                </tr>
+        </table>
+        <p>Math 객체의 메서드 중에는 코사인, 탄젠트, 제곱근과 같이 더 복잡한 수학 연산을 처리하는 것들도 있다.</p>
+    </fieldset>
+    <h3>난수 구하기</h3>
+    <p>Math 객체의 random() 메서드는 0 이상 1 미만의 난수를 반환한다. 따라서 같은 코드라도, 실행할 때마다 값이 달라진다.</p>
+    <fieldset>
+        <legend>난수 구하기</legend>
+        <table>
+            <tr>
+                <th style="width: 100px;">구분</th>
+                <th style="width: 300px;">예제</th>
+                <th style="width: 400px;">설명</th>
+            </tr>
+            <tr>
+                <td>기본</td>
+                <td>
+                    const random = Math.random();<br>
+                    console.log(random);
+                </td>
+                <td>
+                    실행 결과 : 0.5717297760255642 <br>
+                    위 결과는 실행할 때마다 달라진다.
+                </td>
+            </tr>
+            <tr>
+                <td>최댓값 이하의 정수 중 랜덤 반환하기</td>
+                <td>
+                    <p>
+                        function getMaxRandom(max){<br>
+                            return Math.floor(Math.random() * max) + 1;<br>
+                        }
+                    </p>
+                    <p>
+                        const maxRandom = getMaxRandom(20);<br>
+                        // 0 이상 20 이하의 정수<br>
+                        console.log(maxRandom);
+                    </p>
+                </td>
+                <td>
+                    실행 결과 : 0 이상 20 이하의 정수<br>
+                    위 결과는 실행할 때마다 달라진다.
+                </td>
+            </tr>
+            <tr>
+                <td>최솟값~최댓값 사이의 정수 중 랜덤 반환하기</td>
+                <td>
+                    <p>
+                        function getMinMaxRandom(min, max){<br>
+                            return Math.floor(Math.random() * (max-min)) + 1 + min;<br>
+                            //20을 제외하고 싶다면 1을 삭제한다.<br>
+                        }
+                    </p>
+                    <p>
+                        const minMaxRandom = getMinMaxRandom(10, 20);<br>
+                        // 10 이상 20 이하의 정수<br>
+                        console.log(minMaxRandom);
+                    </p>
+                </td>
+                <td>
+                    실행 결과 : 10 이상 20 이하의 정수<br>
+                    위 결과는 실행할 때마다 달라진다.
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+    <script>
+        function getMinMaxRandom(min, max){
+            return Math.floor(Math.random() * (max-min)) + 1 + min;
+            //20을 제외하고 싶다면 1을 삭제한다.
+        }
+        const minMaxRandom = getMinMaxRandom(10, 20);
+        // 10 이상 20 이하의 정수
+        console.log(minMaxRandom);
+    </script>
 </body>
 </html>

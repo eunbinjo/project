@@ -66,6 +66,68 @@ arr3.forEach((v) => { //콜백함수 function(v)
 
 console.log('------------------------')
 
-const date = new Date();
-console.log(date);
+const day = new Date();
+console.log(day);
 
+const date1 = new Date(2022, 11, 25);
+const date2 = new Date(2022, 11, 25, 18, 30, 50);
+console.log(date1);
+console.log(date2);
+
+const date = new Date(2022, 11, 25, 18, 30, 50);
+const dateFormat = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}-${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}`;
+console.log(dateFormat);
+
+const date11 = new Date('2022-12-23');
+const date22 = new Date('2022-12-25');
+const dateDiff = date22.getTime() - date11.getTime();
+//두 날짜 사이의 간격을 밀리초로 구함
+const interval = dateDiff / (24 * 60 * 60 * 1000);
+//24시간, 60분, 60초, 1000밀리초
+console.log(`두 날짜의 차이는 ${interval}일 입니다.`);
+
+console.log('-----------------')
+
+// Math 객체
+
+const floatNum = 10.52;
+
+const math1 = Math.floor(floatNum);
+const math2 = Math.ceil(floatNum);
+const math3 = Math.round(floatNum);
+
+console.log(math1, math2, math3);
+
+const random = Math.random();
+console.log(random);
+
+// 난수 구하기
+function getMaxRandom(max){
+    return Math.floor(Math.random() * max) + 1;
+}
+const maxRandom = getMaxRandom(20);
+// 0 이상 20 이하의 정수
+console.log(maxRandom);
+
+
+//주사위를 만들 수 있는 셈~!
+function getMinMaxRandom(min, max){
+    return Math.floor(Math.random() * (max-min)) + 1 + min;
+    //6을 제외하고 싶다면 1을 삭제한다.
+}
+const minMaxRandom = getMinMaxRandom(1, 6);
+// 1 이상 6 이하의 정수
+console.log(minMaxRandom);
+
+
+// 1분 퀴즈
+
+const array = [10, 120, 30, 50, 20];
+
+const maxNum = 0;
+array.forEach((i) => {
+    if (maxNum < i){
+        maxNum = array[i]
+    };
+    console.log(maxNum);
+}); 
