@@ -35,5 +35,44 @@
     </p>
     <p>따라서 웹 브라우저에 표시되는 HTML 문서는 내부적으로 문서 객체 모델을 해석해서 보이게 된다.</p>
     <p>이때, 문서 객체 모델은 나무를 뒤집어 놓은 형태의 자료구조인 트리 구조를 가지게 된다. 이를 <strong>DOM 트리</strong>라고 한다.</p>
+    <fieldset>
+        <legend>DOM 트리 예시</legend>
+        <img src="DOM_Tree.jpg" alt="DOM_Tree" style="width: 100%;">
+    </fieldset>
+    <p>DOM 트리는 document 객체 하위에 HTML 태그 요소, 속성, 텍스트, 주석 등이 트리 형태로 구성되는데 이들을 각각 <strong>노드(node)</strong>라고 한다. 그리고 DOM 트리의 가장 꼭대기(최상위)에 있는 노드를 <strong>루트 노드(root node)</strong>라고 한다. <br> 위 예시에서 document는 노드가 아닌 객체이므로, 루트 노드는 html이다.</p>
+    <p>각 노드는 <strong>부모, 자식, 형제</strong>관계가 형성된다. <br> html 노드는 head 노드와 body 노드의 부모 노드 이며, head 노드와 body 노드는 html의 자식노드이면서, 같은 레벨에 있으므로 형제 노드이다.</p>
+    <br>
+    <h2>노드 타입 살펴보기</h2>
+    <p>HTML 문법에서도 태그, 속성, 주석이 있는 것처럼 노드도 HTML 구성 요소에 따라 서로 다른 타입이 된다. </p>
+    <fieldset>
+        <legend>주요 노드 타입</legend>
+        <table>
+            <tr>
+                <th style="width: 250px;">타입</th>
+                <th style="width: 450px;">설명</th>
+            </tr>
+            <tr>
+                <td>문서 노드 (Node.DOCUMENT_NODE)</td>
+                <td>최상위 document 객체의 노드 타입</td>
+            </tr>
+            <tr>
+                <td>요소 노드 (Node.ELEMENT_NODE)</td>
+                <td>h1, p 태그와 같은 요소의 노드 타입</td>
+            </tr>
+            <tr>
+                <td>속성 노드(Node.ATTRIBUTE_NODE)</td>
+                <td>herf, src와 같은 속성의 노드 타입</td>
+            </tr>
+            <tr>
+                <td>텍스트 노드(Node.TEXT_NODE)</td>
+                <td>텍스트에 해당하는 노드 타입</td>
+            </tr>
+            <tr>
+                <td>주석 노드(Node.COMMENT_NODE)</td>
+                <td>주석에 해당하는 노드 타입</td>
+            </tr>
+        </table>
+        <p>문서 객체 모델은 CSS를 포함하지 않기 때문에, CSS와 관련된 노드 타입은 없다.</p>
+    </fieldset>
 </body>
 </html>

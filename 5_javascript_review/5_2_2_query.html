@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>query</title>
+</head>
+<body>
+    <div class="box-1">
+        <p class="text">text-1</p>
+        <p class="text">text-2</p>
+    </div>
+    <div class="box-2">
+        <p class="text">text-3</p>
+        <p class="text">text-4</p>
+    </div>
+
+    <script>
+        //class 속성값이 box-1인 요소를 선택한다.
+        const el1 = document.querySelector(".box-1");
+        //class 속성값이 box-1 요소의 하위에 있는 p 태그를 가져오기
+        const getEl = document.getElementsByClassName("box-1")[0].children;
+        console.log(getEl);
+        //위와 아래의 코드는 같은 출력을 내보낸다.
+        const queryEl = document.querySelectorAll(".box-1 .text");
+        console.log(queryEl);
+    </script>
+</body>
+</html>

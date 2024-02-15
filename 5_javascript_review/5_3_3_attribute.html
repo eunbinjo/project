@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attribute</title>
+</head>
+<body>
+    <a href="https://www.notion.so/b5cd065e855545a2bf6f6d7d9aa939e4" id="a1">벤젤 노션 홈페이지</a><br>
+    <a href="https://www.notion.so/b5cd065e855545a2bf6f6d7d9aa939e4" id="a2">벤젤 노션 홈페이지</a>
+
+    <script>
+        const aEl = document.querySelector("#a1");
+        const href = aEl.getAttribute("href");
+        console.log(href);
+
+        const aEl2 = document.querySelector("#a2");
+        const href2 = aEl.getAttribute("href");
+        aEl2.setAttribute("href", "https://youtube.com/playlist?list=PLC05hKFetwzZ2rxwi5heBX7uCxndfRRdc&si=4lFtULYz_6P8GAOZ");
+        aEl2.innerText = "벤젤 플레이리스트";
+        aEl2.setAttribute("target","_blank");
+    </script>
+</body>
+</html>

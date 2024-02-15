@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>createNode and removeNode</title>
+    <style>
+        table{
+           border-collapse: collapse;
+       }
+       caption, th {
+           border: 1px solid #ccc;
+           text-align: center;
+           height: 1.8em;
+       }
+       td {
+           border: 1px solid #ccc;
+           text-align: left;
+           padding-left: 0.3em;
+           height: 1.8em;
+       }
+       table table {
+        font-size: 0.8em;
+       }
+
+       .purple-color {
+        color: #9342f5;
+       }
+       .fz20 {
+        font-size: 20px;
+       }
+       .bold {
+        font-weight: bold;
+       }
+   </style>
+</head>
+<body>
+    <h1>노드 추가/삭제하기</h1>
+    <p>DOM 트리에 새로운 노드를 생성하고, 생성한 노드를 기본 DOM 트리와 연결하면 동적으로 새로운 요소를 화면에 추가할 수 있다.</p>
+    <br>
+    <h2>노드 추가하기</h2>
+    <p>새로운 요소를 화면에 추가하려면 먼저 DOM 트리에 새로운 노드를 생성하는 작업을 해야한다. 그 이후에 생성한 노드를 기존의 DOM 트리에 연결한다.</p>
+    <fieldset>
+        <legend>노드 추가 시 사용하는 메서드</legend>
+        <table>
+            <tr>
+                <th style="width: 80px;">구분</th>
+                <th style="width: 320px;">메서드</th>
+                <th style="width: 280px;">설명</th>
+            </tr>
+            <tr>
+                <td rowspan="3">노드 생성</td>
+                <td>createElement()</td>
+                <td>요소 노드를 생성한다.</td>
+            </tr>
+            <tr>
+                <td>createTextNode()</td>
+                <td>텍스트 노드를 생성한다.</td>
+            </tr>
+            <tr>
+                <td>createAttribute()</td>
+                <td>속성 노드를 생성한다.</td>
+            </tr>
+            <tr>
+                <td rowspan="2">노드 연결</td>
+                <td>[기준 노드].appendChild([자식 노드])</td>
+                <td>기준 노드에 자식 노드를 연결한다.</td>
+            </tr>
+            <tr>
+                <td>[기준 노드].setAttributenode([속성 노드])</td>
+                <td>기준 노드에 속성 노드를 연결한다.</td>
+            </tr>
+        </table>
+    </fieldset>
+    <p><a href="5_4_1_createNode.html" target="_blank">노드 생성 및 연결 예제 페이지</a></p>
+    <fieldset>
+        <legend>위 페이지에 적용한 스크립트</legend>
+        <p>
+            //요소 노드 생성하기<br>
+            const aEl = document.createElement("a");
+        </p>
+        <p>
+            //기존의 돔 트리와 연결<br>
+            //body 요소 노드의 자식 노드로 연결<br>
+            document.body.appendChild(aEl);
+        </p>
+        <p>
+            //단순히 요소만 연결했으므로, 웹 브라우저에 보이는 텍스트 노드를 연결해본다.<br>
+            //텍스트 노드 추가하기<br>
+            //a 요소 노드의 자식으로 연결<br>
+            const txtEl = document.createTextNode("귀염둥이펭귄 지젤");<br>
+            document.querySelector("a").appendChild(txtEl);
+        </p>
+        <p>
+            //a 태그의 속성 노드 연결 (href)<br>
+            //속성노드는 a태그의 자식으로 연결하는 것이 아니다! (다른 메서드 사용)<br>
+            const hrefAttr = document.createAttribute("href");<br>
+            hrefAttr.value = "giselle.png";<br>
+            document.querySelector("a").setAttributeNode(hrefAttr);
+        </p>
+        <p>
+            //a 태그의 속성 노드 연결(target)<br>
+            const target = document.createAttribute("target")<br>
+            target.value = "_blank";<br>
+            document.querySelector("a").setAttributeNode(target);
+        </p>
+        <br>
+        <p>
+            //번외<br>
+            //img 노드 추가하기<br>
+            //1. 요소노드 생성<br>
+            const img = document.createElement("img");<br>
+            //2. 기존 돔 트리와 연결<br>
+            document.body.appendChild(img)<br>
+            //3. img 요소노드의 속성 노드인 src를 연결<br>
+            const imgEl = document.createAttribute("src");<br>
+            imgEl.value = "giselle.png";<br>
+            document.querySelector("img").setAttributeNode(imgEl);
+        </p>
+    </fieldset>
+    <br>
+    <h2>노드 삭제하기</h2>
+    <p>노드를 추가할 수 있다면 당연히 삭제하는 것도 가능하다. 이때는 <strong>removechild()</strong> 메서드를 사용한다.</p>
+    <p>removeChild() 메서드는 부모 노드에 연결된 자식 노드를 삭제한다.</p>
+    <fieldset>
+        <legend>형식</legend>
+        [부모 노드].removeChild([자식 노드]);
+    </fieldset>
+    <p><a href="5_4_2_removeChild.html" target="_blank">removeChild() 메서드 예제 페이지</a></p>
+</body>
+</html>

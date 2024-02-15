@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Form</title>
+    <style>
+        table{
+           border-collapse: collapse;
+       }
+       caption, th {
+           border: 1px solid #ccc;
+           text-align: center;
+           height: 1.8em;
+       }
+       td {
+           border: 1px solid #ccc;
+           text-align: left;
+           padding-left: 0.3em;
+           height: 1.8em;
+       }
+       table table {
+        font-size: 0.8em;
+       }
+
+       .purple-color {
+        color: #9342f5;
+       }
+       .fz20 {
+        font-size: 20px;
+       }
+       .bold {
+        font-weight: bold;
+       }
+   </style>
+</head>
+<body>
+    <h1>폼 조작하기</h1>
+    <h2>form 태그 선택하기</h2>
+    <p>폼 요소를 조작하려면 우선 form 태그를 선택하는 법을 알아야 한다. form 태그는 forms 속성과 name 속성으로 선택할 수 있다.</p>
+    <h3>1. forms 속성 사용하기</h3>
+    <p>document 객체의 forms 속성은 모든 form 태그의 노드 정보를 HTMLCollection 객체에 담아 반환한다.</p>
+    <fieldset>
+        <legend>forms 속성 사용 예시</legend>
+        <form name="frm1">
+            <input type="text">
+        </form>
+        <form name="frm2">
+            <input type="text">
+        </form >
+        <form name="frm3">
+            <input type="text">
+        </form>
+        <br>
+        <p>위 세 개의 form 요소 노드를 forms 속성을 사용해 선택하면?</p>
+        <table>
+            <tr>
+                <th style="width: 400px;">HTML 코드</th>
+                <th style="width: 350px;">script 출력과 결과</th>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        < form><br>
+                            < input type="text"><br>
+                        < /form><br>
+                        < form><br>
+                            < input type="text"><br>
+                        < /form><br>
+                        < form><br>
+                            < input type="text"><br>
+                        < /form>
+                    </p>
+                </td>
+                <td>
+                    <p>console.log(document.forms);</p>
+                    <p>
+                        HTMLCollection(3)<br>
+                        0: form<br>
+                        1: form<br>
+                        2: form<br>
+                        length: 3
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p>개발자도구의 콘솔창에서 document.forms 값을 출력해보면 HTMLCollection 객체에 모든 form 요소 노드의 정보가 담겨 있다.</p>
+                    <p>이때 HTML 객체는 유사 배열이라서, 인덱스를 사용해 form 요소 노드에 하나씩 접근할 수 있다.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>인덱스를 이용해 접근 가능</th>
+                <th>단점</th>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        console.log(document.forms[0]);
+                        console.log(document.forms[1]);
+                        console.log(document.forms[2]);
+                    </p>
+                    <p>실행결과</p>
+                    <p>
+                        console.log(document.forms[0]);<br>
+                        < form><br>
+                        < input type="text"><br>
+                        < /form><br>
+                        console.log(document.forms[1]);<br>
+                        < form><br>
+                            < input type="text"><br>
+                        < /form><br>
+                        console.log(document.forms[2]);<br>
+                        < form><br>
+                            < input type="text"><br>
+                        < /form>
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        하지만 forms 속성을 사용하는 방법은 form 태그의 위치가 바뀌면 잘못 참조하게 되어 예기치 않은 오류가 발생할 수도 있다는 단점을 가진다.
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+    <h3>2. name 속성 사용하기</h3>
+    <p>form 태그에 name 속성을 사용하면 forms 속성보다 훨씬 직관적으로 form 요소 노드를 선택할 수 있다.</p>
+    <fieldset>
+        <legend>name 속성</legend>
+        <table>
+            <tr>
+                <th style="width: 400px;">HTML 코드</th>
+                <th style="width: 350px;">script 출력과 결과</th>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        < form name="frm1"><br>
+                            < input type="text"><br>
+                        < /form><br>
+                        < form name="frm2"><br>
+                            < input type="text"><br>
+                        < /form><br>
+                        < form name="frm3"><br>
+                            < input type="text"><br>
+                        < /form>
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        console.log(document.frm1);
+                        console.log(document.frm2);
+                        console.log(document.frm3);
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p>name 속성값으로 접근하면 form 태그의 순서가 바뀌어도 문제가 발생하지 않는다.</p>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+    <br>
+    <h2>폼 요소 선택하기</h2>
+
+    <script>
+        console.log(document.frm1);
+        console.log(document.frm2);
+        console.log(document.frm3);
+    </script>
+</body>
+</html>

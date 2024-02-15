@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Create Node</title>
+    </head>
+    <body>
+        <script>
+            //요소 노드 생성하기
+            const aEl = document.createElement("a");
+
+            //기존의 돔 트리와 연결
+            //body 요소 노드의 자식 노드로 연결
+            document.body.appendChild(aEl);
+
+            //단순히 요소만 연결했으므로, 웹 브라우저에 보이는 텍스트 노드를 연결해보겠다.
+            //텍스트 노드 추가하기
+            //a 요소 노드의 자식으로 연결
+            const txtEl = document.createTextNode("귀염둥이펭귄 지젤");
+            document.querySelector("a").appendChild(txtEl);
+
+            //a 태그의 속성 노드 연결 (href)
+            //속성노드는 a태그의 자식으로 연결하는 것이 아니다! (다른 메서드 사용)
+            const hrefAttr = document.createAttribute("href");
+            hrefAttr.value = "giselle.png";
+            document.querySelector("a").setAttributeNode(hrefAttr);
+
+            //a 태그의 속성 노드 연결(target)
+            const target = document.createAttribute("target")
+            target.value = "_blank";
+            document.querySelector("a").setAttributeNode(target);
+
+            //번외
+            //img 노드 추가하기
+            //1. 요소노드 생성
+            const img = document.createElement("img");
+            //2. 기존 돔 트리와 연결
+            document.body.appendChild(img)
+            //3. img 요소노드의 속성 노드인 src를 연결
+            const imgEl = document.createAttribute("src");
+            imgEl.value = "giselle.png";
+            document.querySelector("img").setAttributeNode(imgEl);
+        </script>
+    </body>
+</html>

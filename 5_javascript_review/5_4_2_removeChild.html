@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Create Node</title>
+    </head>
+    <body>
+        <p>text 1</p>
+        <a href="https://www.naver.com">네이버</a>
+        <a href="https://www.daum.net">다음</a>
+        <script>
+            //p 요소를 삭제하는 코드
+            const pEl = document.querySelector("p");
+            pEl.parentNode.removeChild(pEl);
+
+            //DOM 트리를 순회하며 a 태그를 모두 삭제하는 코드
+            const childNodes = document.body.childNodes;
+            childNodes.forEach((node) => {
+                if(node.nodeName === "A") 
+                /// nodeName 속성 자체가 노드의 이름을 대문자로 갖기 때문에, 대문자로 사용해야 한다.
+                node.parentNode.removeChild(node);
+            })
+
+            
+        </script>
+    </body>
+</html>
