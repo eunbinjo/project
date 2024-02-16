@@ -1,0 +1,257 @@
+/*폰트 적용*/
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Noto+Sans+KR:wght@100..900&display=swap');
+
+.dm-serif {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.noto-sans {
+    font-family: "Noto Sans KR", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/*기본 스타일 시트 초기화*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a, a:link, a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+li {
+    list-style: none;
+}
+
+/*header*/
+.container {
+    width: 1140px;
+    margin: 0 auto;
+}
+header {
+    position: fixed;
+    top: 0;
+    z-index:1; /*맨 앞에 위치하도록 함*/
+    width: 100%;
+    padding: 1rem;
+}
+header .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+header nav ul {
+    display: flex;
+}
+header nav ul li {
+    padding: 10px;
+}
+header button {
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    color: white;
+}
+header h1 button {
+    font-size: 2rem;
+    font-weight: bold;
+}
+header nav ul li button {
+    font-size: 1.2rem;
+    color: white;
+}
+
+/*main*/
+main {
+    width: 100%;
+    height: 100vh;
+    color: white;
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('images/main.png') center center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+main h4 {
+    font-size: 2rem;
+    position: relative;
+    display: inline-block;
+    justify-content: space-between;
+    padding: 10px;
+}
+main h2 {
+    font-size: 3.5rem;
+    margin: 2rem 0;
+    letter-spacing: 3px;
+    font-family: 'DM Serif Display', serif;
+}
+main p{
+    max-width: 500px;
+    margin: 0 auto;
+    font-size: 1.25rem;
+}
+main button.download {
+    background-color: transparent;
+    border: 3px solid white;
+    border-radius: 20px;
+    padding: 1rem 2rem;
+    margin-top: 3rem;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+main button.mouse {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: upDown 1s ease-in-out infinite;
+    cursor: pointer;
+}
+@keyframes upDown {
+    0% {
+        bottom: 1rem;
+    }
+    50% {
+        bottom: 1.5rem;
+    }
+    100% {
+        bottom: 1rem;
+    }
+}
+
+/*텍스트 타이핑 효과 - 커서 모양*/
+main h2 span::after {
+    content: "";
+    height: 40px;
+    width: 3px;
+    background-color: #fff;
+    display: inline-block;
+    animation: blink .7s ease-in-out infinite;
+}
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/*section - about*/
+section {
+    font-family: "Noto Sans KR", sans-serif;
+    padding: 5rem 0;
+}
+section:nth-child(2n){
+    background-color: #f8f8f8;
+}
+section .title{
+    margin-bottom:3rem;
+}
+section .title h4{
+    font-size: 1.35rem;
+    color: #7039c7;
+    position: relative;
+}
+section:nth-child(2n) .title h4{
+    font-size: 1.35rem;
+    color: #c73939;
+    position: relative;
+}
+section .title h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 3.5rem;
+}
+section .title p {
+    font-size: 1.15rem;
+}
+/*float 속성 해제*/
+section .about-benselle::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+section .flex-container {
+    display: flex;
+    flex-direction: row;
+}
+section .about-benselle .left img {
+    max-width: 100%;
+}
+section .about-benselle .left {
+    flex: 1;
+    background-color: #c73939;
+}
+section .about-benselle .right {
+    flex: 1;
+    padding: 0 2rem;
+}
+section .about-benselle .flex-item {
+    display:flex;
+    background-color: blue;
+    flex-direction: column;
+    justify-content: space-around;
+}
+section .about-benselle .right h3 {
+    font-size: 2.25rem;
+    margin-bottom: 1rem;
+}
+section .about-benselle .right h3 strong {
+    color: #7039c7;
+}
+section .about-benselle .right .txt p {
+    font-size: 1.15rem;
+    margin: 1rem 0;
+}
+section .about-benselle .right .social {
+    font-size: 2.5rem;
+}
+
+/*section - universe*/
+/*float 속성 해제*/
+section .universe::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+section .au {
+    background-color: #fff;
+    width: 30%;
+    padding: 2rem;
+    float: left;
+    margin-right: 5%;
+    cursor: pointer;
+}
+section .au:last-child {
+    margin-right: 0;
+}
+section .au .icon i {
+    font-size: 2.5rem;
+    color: #c73939;
+}
+section .au .content h3 {
+    font-size: 2rem;
+    margin: 1rem 0;
+}
+section .au .content p {
+    font-size: 1.15rem;
+}
+/*au클래스에 마우스를 올리면 배경색과 텍스트 색 변경*/
+section .au:hover{
+    background-color: #c73939;
+    color: #fff;
+}
+section .au:hover i{
+    color: #fff;
+}
