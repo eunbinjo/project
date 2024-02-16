@@ -164,11 +164,283 @@
     </fieldset>
     <br>
     <h2>폼 요소 선택하기</h2>
+    <p>폼 요소에는 input 태그를 비롯해 select 태그, button 태그 등이 있다. 이런 폼 요소를 선택할 때는 elements 속성이나 name 속성을 사용한다.</p>
+    <fieldset>
+        <legend>폼 요소 선택 예제 코드</legend>
+        <form name="frm">
+            <label for="uname">이름</label>
+            <input type="text" id="name" name="uname">
+            <label for="age">나이</label>
+            <input type="text" id="age" name="age">
+            <label for="gender">성별</label>
+            <select id="gender" name="gender">
+                <option value="male">male</option>
+                <option value="female">female</option>
+            </select>
+            <button type="submit">전송</button>
+        </form>
+        <p>console.log(document.frm.elements);</p>
+        <p>개발자 속성을 열어 확인해보면, elements 속성을 이용해 form 요소 노드의 하위 노드 중 폼 요소 노드만 반환된 것을 확인 할 수 있다.</p>
+        <p>elements 속성은 HTMLCollection 객체에 여러 개의 노드를 담아 반환하므로, 인덱스를 이용해 각각의 노드에 접근할 수 있다. 또한 미리 정의한 name 속성을 이용해 노드를 참조할 수 있다.</p>
+    </fieldset>
+    <fieldset>
+        <legend>form 속성의 노드를 참조하는 두 가지 방법</legend>
+        <p>
+            document.frm.elements[0];
+            document.frm.elements['uname'];
+        </p>
+        <p>위 두 가지 코드는 인덱스와 name 속성값을 각각 이용했다는 차이만 있을 뿐, 똑같이 name 속성값이 'uname'인 input 요소 노드를 선택한다.</p>
+        <p>
+            document.frm.uname;
+            document.frm.age;
+            document.forms[0].gender;
+        </p>
+        <p>name값을 이용해 요소를 선택할 때는 위 예시들처럼 elements 속성을 생략하고 name 속성값으로 바로 접근하는 것도 가능하다.</p>
+    </fieldset>
+    <br>
+    <h2>폼 요소의 입력값 다루기</h2>
+    <p>폼 요소는 사용자에게 값을 입력받아 이를 서버로 전달한다. 따라서 서버에 전달하기까지 폼 요소에 입력된 값이 유효한지 검증할 수 있어야 한다.</p>
+    <p>사용자에게 값을 입력받는 대표적인 폼 요소로는 input 태그와 select 태그가 있다.</p>
+    <h3>한 줄 입력 요소</h3>
+    <p>input type = "text, password, number, url, search, email..."</p>
+    <p>한 줄 입력 요소들은 값을 가져오거나 설정하는 방법이 모두 같다.</p>
+    <fieldset>
+        <legend>한 줄 입력 요소 예제 코드</legend>
+        <form name="oneline">
+            <input type="text" name="id"><br>
+            <input type="password" name="pw">
+        </form>
+        <p>text와 password 요소에 사용자가 입력한 값을 가져오려면, 해당 요소 노드에서 <strong>value 속성</strong>을 사용하면 된다.</p>
+        <p>
+            document.oneline.id.value;<br>
+            document.oneline.pw.value;
+        </p>
+        <p>value 속성을 활용하면, 웹 브라우저에서는 암호화되어 보이는 입력값을 확인할 수 있다.</p>
+        <p>
+            document.oneline.id.value = "giselle";<br>
+            document.oneline.pw.value = "benselle";
+        </p>
+        <p>또한, 위처럼 value 속성에 값을 할당해 원하는 값을 자바스크립트로 직접 삽입할 수도 있다.</p>
+    </fieldset>
+    <h3>여러 줄 입력 요소</h3>
+    <p>여러 줄 입력 요소는 textarea 태그를 사용하면 표시되는 폼 요소다.</p>
+    <fieldset>
+        <legend>여러 줄 입력 요소 예제 코드</legend>
+        <form name="textarea">
+            <textarea name="desc"></textarea>
+        </form>
+        <p class="bold">값 가져오기</p>
+        <p>document.textarea.desc.value;</p>
+        <p>값을 가져올때는 한 줄 입력 요소처럼 value 속성을 활용한다.</p>
+        <p class="bold">값 설정하기</p>
+        <p>document.textarea.desc.value = "Benselle - Eternal Twenty";</p>
+        <p>값을 설정할 때는 위와 같이 value 속성에 값을 할당한 자바스크립트 코드를 추가하면 된다.</p>
+    </fieldset>
+    <h3>체크박스</h3>
+    <p>체크박스도 value 속성으로 값을 가져온다. 그러나 한 줄 입력 요소와는 다르게 체크박스에 체크 표시가 있는 것만 값을 가져와야하는 경우가 많다.</p>
+    <fieldset>
+        <legend>체크박스 예제 코드</legend>
+        <form>
+            <label><input type="checkbox" value="apple">사과</label>
+            <label><input type="checkbox" value="banana">바나나</label>
+            <label><input type="checkbox" value="orange">오렌지</label>
+            <label><input type="checkbox" value="melon">멜론</label>
+        </form>
+        <p class="bold">체크 표시가 된 값만 가져오기</p>
+        <p>체크박스에 체크 표시가 있는지는 <strong>checked</strong> 속성으로 확인할 수 있다.</p>
+        <p>
+            const checkEls = document.querySelectorAll("[type='checkbox']");<br>
+            for(i = 0; i < checkEls.length; i++){<br>
+                if(checkEls[i].checked === true){<br>
+                    console.log(checkEls[i].value);<br>
+                }<br>
+            }
+        </p>
+        <p>따라서 위처럼 반복문으로 체크박스 노드에 하나씩 접근한 뒤, checked 속성이 있는지 확인한다. 만약 있으면 value 속성으로 값을 가져온다.</p>
+        <p class="bold">모든 체크박스에 체크 표시하기</p>
+        <p>
+            const checkEls = document.querySelectorAll("[type='checkbox']");<br>
+            for(i = 0; i < checkEls.length; i++){<br>
+                checkEls[i].checked = true;<br>
+            }
+        </p>
+        <p>자바스크립트로 checked 속성에 true 값을 할당하면 된다.</p>
+    </fieldset>
+    <h3>라디오버튼</h3>
+    <p>라디오버튼은 여러 개의 항목 중 하나만 선택하게 할 때 사용하는 폼 요소이다.</p>
+    <p>체크박스와 같은 방식으로 값을 다룬다. 따라서 checked 속성으로 라디오 버튼이 선택되었는지 확인하고, value 속성으로 값을 가져오면 된다.</p>
+    <fieldset>
+        <legend>라디오버튼 예제 코드</legend>
+        <form>
+            <label><input type="radio" name="fruits" value="apple">사과</label>
+            <label><input type="radio" name="fruits" value="banana">바나나</label>
+            <label><input type="radio" name="fruits" value="orange">오렌지</label>
+            <label><input type="radio" name="fruits" value="melon">멜론</label>
+        </form>
+
+        <p class="bold">선택된 값만 가져오기</p>
+        <p>
+            const radioEls = document.getElementsByName("fruits");<br>
+            for(i = 0; i < radioEls.length; i++){<br>
+                if(radioEls[i].checked === true){<br>
+                    console.log(radioEls[i].value);<br>
+            }
+        </p>
+        <p>체크 박스와 마찬가지로, 반복문으로 접근하여 선택되었는지 확인한다.</p>
+        <p class="bold">라디오 버튼을 선택된 상태로 만들기</p>
+        <p>
+            const radioEls = document.getElementsByName("fruits");<br>
+            for(i = 0; i < radioEls.length; i++){<br>
+                if(radioEls[i] === 'banana'){<br>
+                    radioEls[i].checked = true;<br>
+                }<br>
+            }
+        </p>
+        <p>이 또한 마찬가지로 checked 속성을 true로 할당해주면 된다. <br>단, 라디오버튼은 체크 박스처럼 여러 개를 선택하는 요소가 아니므로 원하는 항목만 선택될 수 있도록 if 문을 작성한다.</p>
+    </fieldset>
+    <h3>콤보박스</h3>
+    <p>select 태그로 만드는 콤보박스는 여러 항목에서 하나를 선택하는 형태의 폼 요소이다.</p>
+    <p>select 박스에서는 <strong>selected 속성</strong>으로 선택 항목을 확인할 수 있다.</p>
+    <fieldset>
+        <legend>콤보박스 예제 코드</legend>
+        <form>
+            <select>
+                <option value="Harry Potter">해리 포터</option>
+                <option value="Ronald Weasley">론 위즐리</option>
+                <option value="Hermione Granger">헤르미온느 그레인저</option>
+                <option value="Draco Malfoy">드레이코 말포이</option>
+            </select>
+        </form>
+        <p class="bold">현재 선택된 콤보 박스의 value 속성 값을 가져오기</p>
+        <p>
+            const optEls = document.querySelectorAll("option");<br>
+        for (i = 0; i < optEls.length; i++){<br>
+            if(optEls[i].selected === true){<br>
+                console.log(optEls[i].value);<br>
+            }<br>
+        }
+        </p>
+        <p>checked를 selected라고 쓰는 걸 빼면 기본적인 로직은 체크박스와 같다.</p>
+        <p class="bold">콤보박스를 선택된 상태로 만들기</p>
+        <p>
+            const optEls = document.querySelectorAll("option");<br>
+        for(i = 0; i < optEls.length; i++){<br>
+            if(optEls[i].value === 'Draco Malfoy'){<br>
+                optEls[i].selected = true;<br>
+            }<br>
+        }
+        </p>
+        <p>콤보박스 또한 대개 단일 항목만 선택가능하므로, 라디오버튼과 로직이 비슷하다.</p>
+    </fieldset>
+    <h3>파일 업로드 요소</h3>
+    <p>파일 업로드 요소는 input 태그의 type 속성값을 file로 지정하면 표시되는 요소이다.</p>
+    <p>파일을 업로드할 때 사용하는데, 요소의 값을 가져오는 방법이 다른 요소들과 조금 다르다.</p>
+    <fieldset>
+        <legend>파일 업로드 요소 예제 코드</legend>
+        <form>
+            <input type="file" name="upload" id="upload">
+        </form>
+        <p>파일 업로드 요소에서의 핵심은 <strong>files 속성</strong>으로 반환되는 FileList 객체이다.</p>
+        <p>
+            const filesObj = document.getElementById("upload").files;
+            console.log(filesObj);
+        </p>
+        <p>결과로 FileList 객체가 반환된다. FileList 객체는 파일 업로드 요소로 선택한 파일에 대한 다양한 정보를 가지고 있다.</p>
+        <p class="bold">FileList 객체의 속성에 접근하여 정보 가져오기</p>
+        <p>
+            const files = document.getElementById("upload").files;<br>
+            files[0].name; < 파일 이름<br>
+            files[0].size; < 파일 크기<br>
+            files[0].type; < 파일 타입<br>
+            files[0].lastModifiedDate; < 파일 마지막 수정일
+        </p>
+    </fieldset>
+    <br>
+    <h2>폼 요소 관련 기타 메서드</h2>
+    <p>폼 요소를 다룰 때 속성 말고도 유용하게 사용할 수 있는 많은 메서드가 있다. 두 가지만 간단하게 짚는다.</p> 
+    <table>
+        <tr>
+           <th style="width: 200px;">메서드</th>
+           <th style="width: 350px;">설명</th> 
+        </tr>
+        <tr>
+            <td>submit()</td>
+            <td>폼 요소의 값을 전송(submit)한다.</td>
+        </tr>
+        <tr>
+            <td>focus()</td>
+            <td>폼 요소에 포커스(커서)를 이동한다.</td>
+        </tr>
+    </table>
+    <p>더 많은 메서드는 <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement">이 페이지</a>를 참고하자.</p>
 
     <script>
-        console.log(document.frm1);
-        console.log(document.frm2);
-        console.log(document.frm3);
-    </script>
+        // // 폼 노드를 선택하기
+        // console.log(document.frm1);
+        // console.log(document.frm2);
+        // console.log(document.frm3);
+
+        // // 폼 노드의 요소를 선택하기
+        // console.log(document.frm.elements);
+        // console.log(document.frm.elements[0]);
+        // console.log(document.frm.elements['uname']);
+        
+        // // 한 줄 입력 요소의 입력값 가져오기 - value 속성
+        // console.log(document.oneline.id.value);
+        // console.log(document.oneline.pw.value);
+        // // 원하는 요소를 직접 삽입
+        // document.oneline.id.value = "giselle";
+        // document.oneline.pw.value = "benselle";
+
+        // //여러 줄 입력 요소
+        // document.textarea.desc.value = "Benselle - Eternal Twenty";
+
+        // //체크 박스의 checked 값만 알아보기
+        // const checkEls = document.querySelectorAll("[type='checkbox']");
+        // for(i = 0; i < checkEls.length; i++){
+        //     if(checkEls[i].checked === true){
+        //         console.log(checkEls[i].value);
+        //     }
+        // }
+        // // 체크 박스 전체에 체크 표시하기
+        // const checkEls = document.querySelectorAll("[type='checkbox']");
+        // for(i = 0; i < checkEls.length; i++){
+        //     checkEls[i].checked = true;
+        // }
+        
+
+        // //라디오버튼의 checked 값만 알아보기 (체크박스와 같음)
+        // const radioEls = document.getElementsByName("fruits");
+        // for(i = 0; i < radioEls.length; i++){
+        //     if(radioEls[i].checked === true){
+        //         console.log(radioEls[i].value);
+        //     }
+        // }
+        // // 원하는 항목에 checked 표시하기(단일 항목)
+        // const radioEls = document.getElementsByName("fruits");
+        // for(i = 0; i < radioEls.length; i++){
+        //     if(radioEls[i] === 'banana'){
+        //         radioEls[i].checked = true;
+        //     }
+        // }
+
+        // //선택된 콤보박스의 value 속성값 가져오기
+        // const optEls = document.querySelectorAll("option");
+        // for (i = 0; i < optEls.length; i++){
+        //     if(optEls[i].selected === true){
+        //         console.log(optEls[i].value);
+        //     }
+        // }
+        // // 어떤 값을 기본적으로 선택되게 만들기
+        // const optEls = document.querySelectorAll("option");
+        // for(i = 0; i < optEls.length; i++){
+        //     if(optEls[i].value === 'Draco Malfoy'){
+        //         optEls[i].selected = true;
+        //     }
+        // }
+
+       
+
+</script>
 </body>
 </html>

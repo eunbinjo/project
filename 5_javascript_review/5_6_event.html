@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event</title>
+    <style>
+        table{
+           border-collapse: collapse;
+       }
+       caption, th {
+           border: 1px solid #ccc;
+           text-align: center;
+           height: 1.8em;
+       }
+       td {
+           border: 1px solid #ccc;
+           text-align: left;
+           padding-left: 0.3em;
+           height: 1.8em;
+       }
+       table table {
+        font-size: 0.8em;
+       }
+
+       .purple-color {
+        color: #9342f5;
+       }
+       .fz20 {
+        font-size: 20px;
+       }
+       .bold {
+        font-weight: bold;
+       }
+   </style>
+</head>
+<body>
+    <h1>이벤트 다루기</h1>
+    <p>이벤트(event)는 웹 브라우저와 사용자 사이에 상호작용이 발생하는 특정 시점을 의미한다.</p>
+    <p>이벤트가 발생하면 이벤트 종류에 따라 어떤 작업을 하거나, 미리 등록한 함수를 호출하는 등의 조작을 자바스크립트로 지정할 수 있다.</p>
+    <br>
+    <h2>이벤트 종류</h2>
+    <p>웹 브라우저에서 사용자와의 상호작용으로 발생하는 이벤트는 200여 가지가 넘기 때문에, 모든 이벤트를 다루기 보다는 중요한 것들만 정리한다. <br>더 많은 이벤트는 <a href="https://developer.mozilla.org/ko/docs/Web/Events#non-standard_events">이 페이지</a>로 가서 확인한다. </p>
+    <fieldset>
+        <legend>주요 이벤트 종류</legend>
+        <table>
+            <tr>
+                <th style="width: 120px;">구분</th>
+                <th style="width: 150px;">이벤트</th>
+                <th style="width: 400px;">설명</th>
+            </tr>
+            <tr>
+                <td rowspan="6">마우스 이벤트</td>
+                <td>onclick</td>
+                <td>마우스로 클릭하면 발생한다.</td>
+            </tr>
+            <tr>
+                <td>ondblclick</td>
+                <td>마우스로 빠르게 두 번 클릭하면 발생한다.</td>
+            </tr>
+            <tr>
+                <td>onmouseover</td>
+                <td>마우스 포인터를 올리면 발생한다.</td>
+            </tr>
+            <tr>
+                <td>onmouseout</td>
+                <td>마우스 포인터가 빠져나가면 발생한다.</td>
+            </tr>
+            <tr>
+                <td>onmousemove</td>
+                <td>마우스 포인터가 움직이면 발생한다.</td>
+            </tr>
+            <tr>
+                <td>onwheel</td>
+                <td>마우스 휠(wheel)을 움직이면 발생한다.</td>
+            </tr>
+            <tr>
+                <td rowspan="3">키보드 이벤트</td>
+                <td>onkeypress</td>
+                <td>키보드 버튼을 누르고 있는 동안 발생한다.</td>
+            </tr>
+            <tr>
+                <td>onkeydown</td>
+                <td>키보드 버튼을 누른 순간 발생한다.</td>
+            </tr>
+            <tr>
+                <td>onkeyup</td>
+                <td>키보드 버튼을 눌렀다가 뗀 순간 발생한다.</td>
+            </tr>
+            <tr>
+                <td rowspan="2">포커스 이벤트</td>
+                <td>onfocus</td>
+                <td>요소에 포커스가 되면 발생한다.</td>
+            </tr>
+            <tr>
+                <td>onblur</td>
+                <td>요소가 포커스를 잃으면 발생한다.</td>
+            </tr>
+            <tr>
+                <td>폼 이벤트</td>
+                <td>onsubmit</td>
+                <td>폼이 전송될 때 발생한다.</td>
+            </tr>
+            <tr>
+                <td>리소스 이벤트</td>
+                <td>onload</td>
+                <td>웹 브라우저의 리소스 로드가 끝나면 발생한다.</td>
+            </tr>
+        </table>
+    </fieldset>
+    <br>
+    <h2>이벤트 등록하기</h2>
+    <p>이벤트가 발생할 때 어떤 작업을 할 지 자바스크립트 코드로 작성하는 것을 <strong>이벤트 등록</strong>이라고 한다. 크게 3가지 방법으로 이벤트를 등록할 수 있다.</p>
+    <h3>1. 인라인 방식</h3>
+    <p>HTML 태그에 속성으로 이벤트를 등록하는 방식이다.</p>
+    <fieldset>
+        <legend>인라인 방식 예제 코드</legend>
+        <p class="bold">예제 1</p>
+        <button onclick="clickEvent()">눌러보세용</button>
+        <br>
+        <br>
+        <table>
+            <tr>
+                <th style="width: 250px;">예제 코드</th>
+                <th style="width: 400px;">설명</th>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        < button onclick="clickEvent()">눌러보세용< /button>
+                    </p>
+                    <p>
+                        function clickEvent(){<br>
+                            alert("지젤은 귀엽다!");<br>
+                        }<br>
+                    </p>
+                </td>
+                <td>
+                    <p>onclick 이벤트를 button 태그의 속성으로 사용한다. 속성값으로는 이벤트 발생 시 실행될 함수를 지정했다.</p>
+                    <p>버튼을 클릭하면, clickEvent() 함수가 실행되어 웹브라우저에 경고창이 출력(alert)된다.</p>
+                </td>
+            </tr>
+        </table>
+        <p>이벤트를 동시에 여러 개 사용해 제어할 수도 있다.</p>
+        <p class="bold">예제 2</p>
+        <form>
+            <input type="text" onfocus="focusEvent()" onblur="blurEvent()">
+        </form>
+        <br>
+        <table>
+            <tr>
+                <th style="width: 250px;">예제 코드</th>
+                <th style="width: 400px;">설명</th>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        < form><br>
+                            < input type="text" onfocus="focusEvent()" onblur="blurEvent()"><br>
+                        < /form>
+                    </p>
+                    <p>
+                        function focusEvent(){<br>
+                            console.log("focus on");<br>
+                        }<br>
+                        function blurEvent(){<br>
+                            console.log("focus out");<br>
+                        }
+                    </p>
+                </td>
+                <td>
+                    <p>입력창을 클릭해서 커서를 활성화하면 onfocus 이벤트가 발생하고, 입력창 외부를 클릭하면 onblur 이벤트가 발생한다.</p>
+                    <p>개발자 도구를 열어 확인하면 콘솔 메시지도 함께 확인할 수 있다.</p>
+                </td>
+            </tr>
+        </table>
+        <p class="bold">포커스 이벤트 사용 시 주의점</p>
+        <p>포커스 이벤트를 사용할 때는 코드 내부에 경고창을 나타내는 alert()메서드를 사용하면 안된다. 경고창을 클릭하는 순간 입력창에서 커서가 빠져나갔다고 판단해 onblur가 발생하고, 경고창이 닫히면 다시 커서가 입력창으로 돌아가기때문에 또 경고창이 뜨기 때문이다. 무한 경고창을 방지하자.</p>
+    </fieldset>
+    <br>
+    <h3>2. 프로퍼티 리스너 방식</h3>
+    <p>프로퍼티 리스너(property listener)는 요소 노드에 직접 속성으로 이벤트를 등록하는 방법이다.</p>
+    <fieldset>
+        <legend>프로퍼티 리스너 방식 예제 코드</legend>
+        <p class="bold">예제 1</p>
+        <button id="listener">눌러보세용</button>
+        <br>
+        <br>
+        <table>
+            <tr>
+                <th style="width: 250px;">예제 코드</th>
+                <th style="width: 400px;">설명</th>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        < button id="listener">눌러보세용< /button>
+                    </p>
+                    <p>
+                        const btnEl = document.getElementById("listener");<br>
+                        btnEl.onclick = function(){<br>
+                            alert("지젤은 귀엽고 사랑스럽다!");<br>
+                        }
+                    </p>
+                </td>
+                <td>
+                    <p>버튼을 클릭했을 때, 요소 노드에 등록된 이벤트 속성에 할당된 함수가 실행된다.</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p>위 코드는 아래 두 방법으로도 똑같이 작성할 수 있다.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        < button id="listener">눌러보세용< /button>
+                    </p>
+                    <p>
+                        const btnEl = document.getElementById("listener");<br>
+                        btnEl.onclick = () => {<br>
+                            alert("지젤은 귀엽고 사랑스럽다!");<br>
+                        }
+                    </p>
+                </td>
+                <td>
+                    <p>화살표 함수를 활용해 작성.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        < button id="listener">눌러보세용< /button>
+                    </p>
+                    <p>
+                        const btnEl = document.getElementById("listener");<br>
+                        btnEl.onclick = clickEvent;<br>
+                        function clickEvent(){<br>
+                            alert("지젤은 귀엽고 사랑스럽다!");<br>
+                        }
+                    </p>
+                </td>
+                <td>
+                    <p>함수를 별도로 정의하고 함수명을 이용해 이벤트와 연결.</p>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+    <br>
+    <h3>3. 이벤트 등록 메서드 방식</h3>
+    <p>DOM에서 제공하는 <strong>addEventListener()</strong> 메서드를 사용해 이벤트를 등록하는 방법이다. 3가지 방법 중 가장 권장하는 방식이다.</p>
+    <fieldset>
+        <legend>addEventListener() 메서드</legend>
+        <p class="bold">[노드].addEventListener("[이벤트 타입]", [이벤트 함수]);</p>
+        <p>위 형식의 파라미터 중 이벤트 타입이라 함은, 이벤트 종류에서 'on'을 제외하면 된다.</p>
+        <button id="push">push me!</button>
+        <br>
+        <br>
+        <table>
+            <tr>
+                <th style="width: 250px;">예제 코드</th>
+                <th style="width: 400px;">설명</th>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        < button id="push">push me!< /button>
+                    </p>
+                    <p>
+                        const pushEl = document.querySelector("#push");<br>
+                        pushEl.addEventListener("click", function(){<br>
+                            alert("지젤은 아기펭귄입니다. 정말 귀엽고 사랑스럽죠.");<br>
+                        });
+                    </p>
+                </td>
+                <td>
+                    <p>노드를 선택해 pushEl 변수에 할당하고, 여기에 addEventListener() 메서드를 사용해 이벤트를 등록시킨다.</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p>위 코드는 아래 방법으로도 똑같이 작성할 수 있다.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        < button id="push">push me!< /button>
+                    </p>
+                    <p>
+                        const pushEl = document.getElementById("push");<br>
+                        const clickEvent2 = function(){<br>
+                            alert("지젤은 아기펭귄입니다. 정말 귀엽고 사랑스럽죠.");<br>
+                        }<br>
+                        pushEl.addEventListener("click", clickEvent2);<br>
+                    </p>
+                </td>
+                <td>
+                    <p>함수 표현식이나 함수 선언문으로 정의한 함수명으로 연결하는 방식.</p>
+                    <p>단, 함수 표현식으로 정의된 함수는 호이스팅에 의해 선언과 할당이 분리되므로 참조하려는 함주사 addEventListener() 메서드보다 반드시 위에 작성되어야 한다.</p>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+
+    <p class="bold">1분 퀴즈</p>
+    <button id="quiz">클릭</button>
+    <p>더블클릭하면 경고창이 나온다.</p>
+
+    <script>
+        //인라인 방식1
+        function clickEvent(){
+            alert("지젤은 귀엽다!");
+        }
+
+        //인라인 방식2
+        function focusEvent(){
+            console.log("focus on");
+        }
+        function blurEvent(){
+            console.log("focus out");
+        }
+
+        //프로퍼티 리스너 방식
+        const btnEl = document.getElementById("listener");
+        btnEl.onclick = function(){
+            alert("지젤은 귀엽고 사랑스럽다!");
+        }
+
+        // //이벤트 등록 메서드1
+        // const pushEl = document.querySelector("#push");
+        // pushEl.addEventListener("click", function(){
+        //     alert("지젤은 아기펭귄입니다. 정말 귀엽고 사랑스럽죠.");
+        // });
+        
+        //이벤트 등록 메서드2
+        const pushEl = document.getElementById("push");
+        const clickEvent2 = function(){
+            alert("지젤은 아기펭귄입니다. 정말 귀엽고 사랑스럽죠.");
+        }
+        pushEl.addEventListener("click", clickEvent2);
+
+        const quiz = document.getElementById("quiz");
+        const double = () => {
+            alert("경고창입니다.")
+        }
+        quiz.addEventListener("dblclick", double);
+    </script>
+</body>
+</html>
