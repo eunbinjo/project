@@ -153,7 +153,7 @@ section {
     font-family: "Noto Sans KR", sans-serif;
     padding: 5rem 0;
 }
-section:nth-child(2n){
+section.red {
     background-color: #f8f8f8;
 }
 section .title{
@@ -164,7 +164,7 @@ section .title h4{
     color: #7039c7;
     position: relative;
 }
-section:nth-child(2n) .title h4{
+section.red .title h4{
     font-size: 1.35rem;
     color: #c73939;
     position: relative;
@@ -187,19 +187,17 @@ section .flex-container {
     flex-direction: row;
 }
 section .about-benselle .left img {
-    max-width: 100%;
+    width: 100%;
 }
 section .about-benselle .left {
-    flex: 1;
-    background-color: #c73939;
+    width: 50%;
 }
 section .about-benselle .right {
-    flex: 1;
+    width: 50%;
     padding: 0 2rem;
 }
 section .about-benselle .flex-item {
     display:flex;
-    background-color: blue;
     flex-direction: column;
     justify-content: space-around;
 }
@@ -219,13 +217,12 @@ section .about-benselle .right .social {
 }
 
 /*section - universe*/
-/*float 속성 해제*/
-section .universe::after {
+section .au::after {
     content: "";
     clear: both;
     display: block;
 }
-section .au {
+section .au .au-inner {
     background-color: #fff;
     width: 30%;
     padding: 2rem;
@@ -233,25 +230,74 @@ section .au {
     margin-right: 5%;
     cursor: pointer;
 }
-section .au:last-child {
+section .au .au-inner:last-child {
     margin-right: 0;
 }
-section .au .icon i {
+section .au .au-inner .icon i {
     font-size: 2.5rem;
     color: #c73939;
 }
-section .au .content h3 {
+section .au .au-inner .content h3 {
     font-size: 2rem;
     margin: 1rem 0;
 }
-section .au .content p {
+section .au .au-inner .content p {
     font-size: 1.15rem;
 }
 /*au클래스에 마우스를 올리면 배경색과 텍스트 색 변경*/
-section .au:hover{
+section .au .au-inner:hover{
     background-color: #c73939;
     color: #fff;
 }
-section .au:hover i{
+section .au .au-inner:hover i{
     color: #fff;
+}
+
+/*배경 영역*/
+.bg {
+    background: url('images/background.png') center center;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 650px;
+}
+
+/*section - trpg*/
+section.trpg::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+section.trpg .session {
+    width: 30%;
+    margin-right: 5%;
+    padding: 1rem 1rem 1.5rem 1rem;
+    float: left;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    margin-bottom: 3rem;
+}
+section.trpg .session:nth-child(3n){
+    margin-right: 0;
+}
+section.trpg .session .session-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+section.trpg .session-img{
+    width: 300px;
+    height: 200px;
+    background-color: gray;
+    border: 1px solid #ccc;
+    margin: auto;
+}
+section.trpg .session strong {
+    color: #7039c7;
+    margin: 0.5rem 0.2rem 0rem 0.3rem;
+    display: block;
+}
+section.trpg .session h3 {
+    font-size: 1.5rem;
+    margin-left: 0.2rem;
 }
