@@ -13,21 +13,21 @@
     <header>
         <div class="container"><!--Html 구조의 핵심인 container 클래스가 포함된 div 태그-->
             <h1>
-                <button>Benselle</button>
+                <button data-animation-scroll="true" data-target="#main">Benselle</button>
             </h1>
             <nav>
                 <ul>
                     <li>
-                        <button>About</button>
+                        <button data-animation-scroll="true" data-target="#about">About</button>
                     </li>
                     <li>
-                        <button>Universe</button>
+                        <button data-animation-scroll="true" data-target="#universe">Universe</button>
                     </li>
                     <li>
-                        <button>Session</button>
+                        <button data-animation-scroll="true" data-target="#trpg">Session</button>
                     </li>
                     <li>
-                        <button>Contact</button>
+                        <button data-animation-scroll="true" data-target="#contact">Contact</button>
                     </li>
                 </ul>
             </nav>
@@ -39,7 +39,7 @@
         <div class="container">
             <h4>Benjamin Ryan</h4>
             <h4>Giselle Caudill</h4>
-            <h2><span>Eternal Twenty</span></h2>
+            <h2>♥ <span></span> ♥</h2>
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure dolorem unde, reiciendis nobis.</p>
             <button class="download">Download BG</button>
             <button class="mouse"><i class="fa-solid fa-computer-mouse"></i></button>
@@ -69,7 +69,7 @@
                         <a href="#"><i class="fa-solid fa-wand-sparkles"></i></a>
                         <a href="#"><i class="fa-solid fa-heart"></i></a>
                         <a href="#"><i class="fa-solid fa-dice"></i></a>
-                        <a href="#"><i class="fa-solid fa-link"></i></i></a>
+                        <a href="#"><i class="fa-solid fa-link"></i></a>
                     </div>
                 </div>
             </div>
@@ -171,17 +171,62 @@
     </section>
     <!--end-->
     <!--contact-->
-    <section id="contaxt" class="contact red">
+    <section id="contact" class="contact red">
         <div class="container">
             <div class="title">
                 <h4>Until the very end</h4>
                 <h2>Contact With Me</h2>
             </div>
             <div class="contact-me">
-                <div class="left"></div>
-                <div class="right"></div>
+                <div class="left">
+                    <div class="card">
+                        <div class="icon">
+                            <i class="fa-solid fa-phone-volume"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>phone</h3>
+                            <p>010-2020-0829</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="icon">
+                            <i class="fa-solid fa-envelope-open-text"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>email</h3>
+                            <p>benselle@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="icon">
+                            <i class="fa-solid fa-location-crosshairs"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>address</h3>
+                            <p>London, England</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <form action="#">
+                        <div class="form-group">
+                            <label for="name">name</label>
+                            <input type="text" id="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">email</label>
+                            <input type="text" id="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="msg">massage</label>
+                            <textarea id="msg"></textarea>
+                        </div>
+                        <button type="submit">send</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
+    <script src="script.js"></script>
 </body>
 </html>
